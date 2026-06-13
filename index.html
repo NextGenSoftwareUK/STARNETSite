@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>STARNET — The Decentralized App Store of the OASIS Omniverse</title>
+<meta name="description" content="STARNET is the decentralized holon registry and asset store of the OASIS Omniverse. Publish OAPPs, Quests, Missions, NFTs, GeoHotSpots, Worlds, Templates and more — versioned, Avatar-signed, and live in every connected world via the WEB5 STAR API."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap"/>
+<style>
+:root{
+  --bg:#050314;
+  --surface:#0d0a24;
+  --surface2:#140f33;
+  --violet:#8b5cf6;
+  --violet-light:#a78bfa;
+  --violet-deep:#6d28d9;
+  --cyan:#00e5ff;
+  --green:#00cc88;
+  --gold:#f0a500;
+  --red:#ff4455;
+  --text:#ece8ff;
+  --text-dim:#a8bfd8;
+  --border:rgba(139,92,246,.2);
+  --glow:rgba(139,92,246,.3);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;font-size:17px;line-height:1.6;overflow-x:hidden}
+
+/* ── SCANLINES ── */
+body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.08) 2px,rgba(0,0,0,.08) 4px);pointer-events:none;z-index:9999}
+
+/* ── STARS ── */
+#stars{position:fixed;inset:0;z-index:0;pointer-events:none}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:.9rem 2.5rem;background:rgba(5,3,20,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-brand{display:flex;align-items:center;gap:.75rem;text-decoration:none}
+.nav-logo{width:36px;height:36px}
+.nav-brand span{font-family:'Orbitron',sans-serif;font-size:1.1rem;font-weight:700;color:var(--violet-light);letter-spacing:.12em}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:var(--text-dim);text-decoration:none;font-weight:600;font-size:.95rem;letter-spacing:.06em;transition:color .2s}
+.nav-links a:hover{color:var(--violet-light)}
+.nav-cta{background:var(--violet);color:#fff;padding:.45rem 1.2rem;border-radius:4px;font-family:'Orbitron',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-decoration:none;transition:opacity .2s}
+.nav-cta:hover{opacity:.85}
+
+/* ── HERO ── */
+#hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:8rem 2rem 5rem;overflow:hidden;z-index:1}
+.hero-inner{position:relative;z-index:2;max-width:920px}
+.hero-kicker{display:inline-block;font-family:'Share Tech Mono',monospace;font-size:.85rem;letter-spacing:.25em;color:var(--violet-light);border:1px solid var(--violet);padding:.35rem 1.1rem;border-radius:2px;margin-bottom:1.8rem;text-transform:uppercase}
+#hero h1{font-family:'Orbitron',sans-serif;font-size:clamp(2.4rem,6vw,4.2rem);font-weight:900;line-height:1.1;margin-bottom:1.4rem;text-shadow:0 0 40px var(--glow)}
+#hero h1 span{color:var(--violet-light)}
+.hero-sub{font-size:1.2rem;color:var(--text-dim);max-width:660px;margin:0 auto 2.8rem;line-height:1.7}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:var(--violet);color:#fff;padding:.75rem 2rem;border-radius:5px;font-family:'Orbitron',sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.1em;text-decoration:none;transition:opacity .2s,box-shadow .2s;box-shadow:0 0 18px rgba(139,92,246,.5)}
+.btn-primary:hover{opacity:.9;box-shadow:0 0 30px rgba(139,92,246,.7)}
+.btn-outline{border:1px solid var(--violet);color:var(--violet-light);padding:.75rem 2rem;border-radius:5px;font-family:'Orbitron',sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.1em;text-decoration:none;transition:background .2s,color .2s}
+.btn-outline:hover{background:rgba(139,92,246,.14)}
+.btn-outline-cyan{border:1px solid var(--cyan);color:var(--cyan);padding:.75rem 2rem;border-radius:5px;font-family:'Orbitron',sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.1em;text-decoration:none;transition:background .2s}
+.btn-outline-cyan:hover{background:rgba(0,229,255,.1)}
+
+/* hero SVG network */
+#hero-svg{position:absolute;inset:0;width:100%;height:100%;z-index:1;opacity:.92}
+
+/* ── SECTIONS ── */
+section{position:relative;z-index:1}
+.section-inner{max-width:1180px;margin:0 auto;padding:0 2rem}
+.section-head{text-align:center;margin-bottom:3.5rem}
+.section-kicker{display:inline-block;font-family:'Share Tech Mono',monospace;font-size:.78rem;letter-spacing:.22em;color:var(--violet-light);margin-bottom:.9rem;text-transform:uppercase}
+.section-head h2{font-family:'Orbitron',sans-serif;font-size:clamp(1.6rem,3.5vw,2.5rem);font-weight:700;margin-bottom:.9rem}
+.section-head p{color:var(--text-dim);max-width:660px;margin:0 auto;font-size:1.05rem}
+
+/* ── WHAT IS STARNET ── */
+#what{padding:6rem 0}
+.what-grid{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center}
+.what-text h2{font-family:'Orbitron',sans-serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;margin-bottom:1.2rem}
+.what-text h2 span{color:var(--violet-light)}
+.what-text p{color:var(--text-dim);line-height:1.8;margin-bottom:1rem;font-size:1.05rem}
+.what-card{border-radius:12px;overflow:hidden;border:1px solid var(--border);box-shadow:0 0 50px rgba(139,92,246,.16)}
+.what-card svg{width:100%;display:block}
+.stat-row{display:flex;gap:1.2rem;margin-top:1.8rem;flex-wrap:wrap}
+.stat-box{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:.9rem 1.2rem;flex:1;min-width:120px;text-align:center}
+.stat-box .num{font-family:'Orbitron',sans-serif;font-size:1.5rem;font-weight:700;color:var(--violet-light)}
+.stat-box .lbl{font-size:.78rem;color:var(--text-dim);letter-spacing:.05em;margin-top:.2rem}
+
+/* ── HOLON TYPES ── */
+#holons{padding:6rem 0;background:linear-gradient(180deg,transparent,rgba(139,92,246,.05),transparent)}
+.holon-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:1.5rem}
+.holon-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.5rem;transition:border-color .3s,box-shadow .3s,transform .3s;will-change:transform}
+.holon-card:hover{border-color:var(--violet);box-shadow:0 0 22px rgba(139,92,246,.2);transform:translateY(-3px)}
+.holon-icon{font-size:1.9rem;margin-bottom:.8rem}
+.holon-card h3{font-family:'Orbitron',sans-serif;font-size:.86rem;font-weight:700;color:var(--violet-light);letter-spacing:.05em;margin-bottom:.55rem}
+.holon-card p{color:var(--text-dim);font-size:.92rem;line-height:1.6}
+.holon-card .cmd{display:inline-block;margin-top:.7rem;font-family:'Share Tech Mono',monospace;font-size:.74rem;color:var(--cyan);background:rgba(0,229,255,.07);border:1px solid rgba(0,229,255,.18);padding:.2rem .55rem;border-radius:4px}
+
+/* ── CLI / DEVELOPER ── */
+#cli{padding:6rem 0;background:linear-gradient(180deg,transparent,rgba(0,0,0,.3),transparent)}
+.dev-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+.dev-text h2{font-family:'Orbitron',sans-serif;font-size:clamp(1.4rem,3vw,2.2rem);font-weight:700;margin-bottom:1rem}
+.dev-text h2 span{color:var(--violet-light)}
+.dev-text p{color:var(--text-dim);line-height:1.8;margin-bottom:1rem;font-size:1.02rem}
+.term{background:#070518;border:1px solid rgba(139,92,246,.25);border-radius:8px;overflow:hidden;box-shadow:0 0 40px rgba(139,92,246,.1)}
+.term-bar{display:flex;align-items:center;gap:.4rem;padding:.6rem .9rem;background:rgba(139,92,246,.08);border-bottom:1px solid rgba(139,92,246,.18)}
+.term-dot{width:11px;height:11px;border-radius:50%}
+.term-dot.r{background:#ff5f56}.term-dot.y{background:#ffbd2e}.term-dot.g{background:#27c93f}
+.term-title{margin-left:.6rem;font-family:'Share Tech Mono',monospace;font-size:.74rem;color:var(--text-dim);letter-spacing:.08em}
+.code-block{padding:1.4rem;font-family:'Share Tech Mono',monospace;font-size:.82rem;line-height:1.85;color:#c8d6ff;overflow-x:auto;white-space:pre-wrap;word-break:break-word;margin:0}
+.code-block .cm{color:#5a6a92}
+.code-block .pr{color:var(--violet-light)}
+.code-block .cmd{color:var(--cyan)}
+.code-block .arg{color:#c8d6ff}
+.code-block .str{color:var(--green)}
+.code-block .ok{color:var(--gold)}
+.tech-pills{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.5rem}
+.tech-pill{background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.28);color:var(--violet-light);padding:.35rem .9rem;border-radius:20px;font-size:.8rem;font-family:'Share Tech Mono',monospace;letter-spacing:.05em}
+.dev-links{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.8rem}
+
+/* ── FLOW ── */
+#flow{padding:6rem 0}
+.flow-strip{display:flex;align-items:stretch;gap:0;background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-top:1rem}
+.flow-step{flex:1;padding:1.6rem 1.2rem;text-align:center;border-right:1px solid var(--border);position:relative}
+.flow-step:last-child{border-right:none}
+.flow-step .fs-num{font-family:'Orbitron',sans-serif;font-size:.72rem;color:var(--violet-light);font-weight:700;margin-bottom:.5rem;letter-spacing:.12em}
+.flow-step .fs-icon{font-size:1.8rem;margin-bottom:.6rem}
+.flow-step h3{font-family:'Orbitron',sans-serif;font-size:.84rem;font-weight:700;margin-bottom:.5rem;letter-spacing:.04em}
+.flow-step p{font-size:.85rem;color:var(--text-dim);line-height:1.5}
+
+/* ── ARCHITECTURE ── */
+#architecture{padding:6rem 0;background:linear-gradient(180deg,transparent,rgba(0,0,0,.25),transparent)}
+.arch-wrap{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:2rem;overflow-x:auto}
+.arch-eq{display:flex;align-items:center;justify-content:center;gap:1.2rem;margin-top:2rem;flex-wrap:wrap}
+.arch-eq-pill{font-family:'Orbitron',sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.08em;padding:.5rem 1.2rem;border-radius:4px}
+.arch-eq-pill.violet{background:rgba(139,92,246,.12);color:var(--violet-light);border:1px solid rgba(139,92,246,.35)}
+.arch-eq-pill.cyan{background:rgba(0,229,255,.1);color:var(--cyan);border:1px solid rgba(0,229,255,.3)}
+.arch-eq-pill.gold{background:rgba(240,165,0,.1);color:var(--gold);border:1px solid rgba(240,165,0,.3)}
+.arch-eq-op{font-family:'Orbitron',sans-serif;font-size:1.1rem;color:var(--text-dim);font-weight:700}
+.arch-eq-result{font-family:'Orbitron',sans-serif;font-size:.95rem;font-weight:900;color:var(--violet-light);letter-spacing:.14em;text-shadow:0 0 12px rgba(139,92,246,.5)}
+
+/* ── ROADMAP ── */
+#roadmap{padding:6rem 0;background:linear-gradient(180deg,transparent,rgba(139,92,246,.04),transparent)}
+.rm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.rm-tile{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.8rem;position:relative;will-change:transform}
+.rm-tile:hover{border-color:rgba(139,92,246,.45);box-shadow:0 0 20px rgba(139,92,246,.14)}
+.rm-tile.active{border-color:rgba(139,92,246,.5);box-shadow:inset 0 0 30px rgba(139,92,246,.08)}
+.rm-tile.soon{border-color:rgba(0,229,255,.3)}
+.rm-tile.soon:hover{border-color:var(--cyan);box-shadow:0 0 20px rgba(0,229,255,.15)}
+.rm-tile.future{border:1px dashed rgba(139,92,246,.32)}
+.rm-kicker{font-family:'Share Tech Mono',monospace;font-size:.68rem;letter-spacing:.2em;margin-bottom:.8rem;font-weight:700}
+.rm-kicker.violet{color:var(--violet-light)}
+.rm-kicker.cyan{color:var(--cyan)}
+.rm-kicker.dim{color:var(--text-dim)}
+.rm-tile h3{font-family:'Orbitron',sans-serif;font-size:.95rem;font-weight:700;margin-bottom:.7rem}
+.rm-tile p{color:var(--text-dim);font-size:.9rem;line-height:1.6}
+.rm-badge{position:absolute;top:1.2rem;right:1.2rem;font-family:'Share Tech Mono',monospace;font-size:.62rem;padding:.2rem .55rem;border-radius:2px}
+.rm-badge.active{background:rgba(139,92,246,.2);color:var(--violet-light);border:1px solid rgba(139,92,246,.4)}
+.rm-badge.soon{background:rgba(0,229,255,.15);color:var(--cyan);border:1px solid rgba(0,229,255,.3)}
+
+/* ── CTA ── */
+#cta{padding:6rem 0}
+.cta-box{background:linear-gradient(135deg,rgba(139,92,246,.12),rgba(0,229,255,.06));border:1px solid rgba(139,92,246,.3);border-radius:16px;padding:4rem 3rem;text-align:center;max-width:800px;margin:0 auto}
+.cta-box h2{font-family:'Orbitron',sans-serif;font-size:clamp(1.5rem,3.5vw,2.5rem);font-weight:700;margin-bottom:1rem}
+.cta-box h2 span{color:var(--violet-light)}
+.cta-box p{color:var(--text-dim);font-size:1.1rem;margin-bottom:2.2rem;max-width:560px;margin-left:auto;margin-right:auto}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+
+/* ── FOOTER ── */
+footer{background:var(--surface);border-top:1px solid var(--border);padding:4rem 2rem 2rem;--text-dim:#a8bfd8}
+.foot-inner{max-width:1180px;margin:0 auto}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem;margin-bottom:3rem}
+.foot-brand .logo-txt{font-family:'Orbitron',sans-serif;font-size:1rem;font-weight:700;color:var(--violet-light);letter-spacing:.12em;margin-bottom:.6rem}
+.foot-brand p{color:var(--text-dim);font-size:.88rem;line-height:1.7;max-width:250px;margin-bottom:1.2rem}
+.social-row{display:flex;gap:.7rem;flex-wrap:wrap}
+.social-row a{display:inline-block;font-family:'Share Tech Mono',monospace;font-size:.72rem;letter-spacing:.1em;color:var(--text-dim);border:1px solid rgba(168,191,216,.25);padding:.35rem .75rem;border-radius:4px;text-decoration:none;transition:border-color .2s,color .2s}
+.social-row a:hover{border-color:var(--violet);color:var(--violet-light)}
+.foot-col h4{font-family:'Orbitron',sans-serif;font-size:.72rem;letter-spacing:.15em;font-weight:700;color:var(--text);margin-bottom:1rem;text-transform:uppercase}
+.foot-col ul{list-style:none}
+.foot-col ul li{margin-bottom:.5rem}
+.foot-col ul li a{color:var(--text-dim);text-decoration:none;font-size:.9rem;transition:color .2s}
+.foot-col ul li a:hover{color:var(--violet-light)}
+.foot-bottom{border-top:1px solid var(--border);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.foot-bottom p{color:var(--text-dim);font-size:.82rem}
+.foot-bottom a{color:var(--text-dim);text-decoration:none}
+.foot-bottom a:hover{color:var(--violet-light)}
+
+/* ── SCROLL REVEAL ── */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .what-grid,.dev-grid{grid-template-columns:1fr}
+  .rm-grid{grid-template-columns:1fr 1fr}
+  nav .nav-links{display:none}
+  .flow-strip{flex-direction:column}
+  .flow-step{border-right:none;border-bottom:1px solid var(--border)}
+  .flow-step:last-child{border-bottom:none}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+  .rm-grid,.foot-grid{grid-template-columns:1fr}
+  .hero-btns,.dev-links,.cta-btns{flex-direction:column;align-items:center}
+}
+</style>
+</head>
+<body>
+
+<canvas id="stars"></canvas>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-brand">
+    <svg class="nav-logo" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="18" cy="18" r="17" stroke="#8b5cf6" stroke-width="1.5" fill="rgba(139,92,246,.08)"/>
+      <line x1="18" y1="18" x2="18" y2="6" stroke="#8b5cf6" stroke-width="1" opacity=".6"/>
+      <line x1="18" y1="18" x2="28" y2="13" stroke="#8b5cf6" stroke-width="1" opacity=".6"/>
+      <line x1="18" y1="18" x2="27" y2="26" stroke="#8b5cf6" stroke-width="1" opacity=".6"/>
+      <line x1="18" y1="18" x2="9" y2="26" stroke="#8b5cf6" stroke-width="1" opacity=".6"/>
+      <line x1="18" y1="18" x2="8" y2="13" stroke="#8b5cf6" stroke-width="1" opacity=".6"/>
+      <circle cx="18" cy="6" r="2.4" fill="#a78bfa"/>
+      <circle cx="28" cy="13" r="2.4" fill="#a78bfa"/>
+      <circle cx="27" cy="26" r="2.4" fill="#a78bfa"/>
+      <circle cx="9" cy="26" r="2.4" fill="#a78bfa"/>
+      <circle cx="8" cy="13" r="2.4" fill="#a78bfa"/>
+      <circle cx="18" cy="18" r="3.6" fill="#8b5cf6"/>
+    </svg>
+    <span>STARNET</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#what">About</a></li>
+    <li><a href="#holons">Holons</a></li>
+    <li><a href="#cli">CLI</a></li>
+    <li><a href="#architecture">Architecture</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+  </ul>
+  <a href="https://github.com/NextGenSoftwareUK/OASIS" target="_blank" rel="noopener" class="nav-cta">GITHUB</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <svg id="hero-svg" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="rg1" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#8b5cf6" stop-opacity=".18"/>
+        <stop offset="100%" stop-color="#050314" stop-opacity="0"/>
+      </radialGradient>
+      <filter id="glow-v"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      <filter id="glow-sm"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      <!-- holon hexagon (origin-centred) -->
+      <g id="hx">
+        <polygon points="0,-15 13,-7.5 13,7.5 0,15 -13,7.5 -13,-7.5" fill="rgba(139,92,246,.12)" stroke="#a78bfa" stroke-width="1.2"/>
+        <circle cx="0" cy="0" r="3.2" fill="#a78bfa"/>
+      </g>
+      <g id="hxc">
+        <polygon points="0,-15 13,-7.5 13,7.5 0,15 -13,7.5 -13,-7.5" fill="rgba(0,229,255,.1)" stroke="#00e5ff" stroke-width="1.2"/>
+        <circle cx="0" cy="0" r="3.2" fill="#00e5ff"/>
+      </g>
+    </defs>
+
+    <!-- center glow -->
+    <ellipse cx="600" cy="350" rx="360" ry="250" fill="url(#rg1)"/>
+
+    <!-- faint constellation lines -->
+    <g opacity=".2" stroke="#8b5cf6" stroke-width="1">
+      <line x1="600" y1="350" x2="600" y2="200"/>
+      <line x1="600" y1="350" x2="324" y2="115"/>
+      <line x1="600" y1="350" x2="876" y2="115"/>
+      <line x1="600" y1="350" x2="153" y2="440"/>
+      <line x1="600" y1="350" x2="1047" y2="440"/>
+      <line x1="600" y1="350" x2="600" y2="640"/>
+    </g>
+
+    <!-- Outer orbit ring (slow) -->
+    <g>
+      <animateTransform attributeName="transform" type="rotate" from="0 600 350" to="360 600 350" dur="64s" repeatCount="indefinite"/>
+      <ellipse cx="600" cy="350" rx="470" ry="290" fill="none" stroke="rgba(139,92,246,.12)" stroke-width="1" stroke-dasharray="6,8"/>
+      <use href="#hx" x="1047" y="440"/>
+      <use href="#hxc" x="600" y="640"/>
+      <use href="#hx" x="153" y="440"/>
+      <use href="#hx" x="324" y="115"/>
+      <use href="#hxc" x="876" y="115"/>
+    </g>
+
+    <!-- Mid orbit ring (reverse) -->
+    <g>
+      <animateTransform attributeName="transform" type="rotate" from="360 600 350" to="0 600 350" dur="46s" repeatCount="indefinite"/>
+      <ellipse cx="600" cy="350" rx="340" ry="215" fill="none" stroke="rgba(139,92,246,.13)" stroke-width="1" stroke-dasharray="5,7"/>
+      <use href="#hx" x="840" y="502"/>
+      <use href="#hxc" x="360" y="502"/>
+      <use href="#hx" x="360" y="198"/>
+      <use href="#hx" x="840" y="198"/>
+    </g>
+
+    <!-- Inner orbit ring -->
+    <g>
+      <animateTransform attributeName="transform" type="rotate" from="0 600 350" to="360 600 350" dur="34s" repeatCount="indefinite"/>
+      <ellipse cx="600" cy="350" rx="230" ry="150" fill="none" stroke="rgba(139,92,246,.14)" stroke-width="1" stroke-dasharray="4,6"/>
+      <use href="#hx" x="799" y="425"/>
+      <use href="#hxc" x="401" y="425"/>
+      <use href="#hx" x="600" y="200"/>
+    </g>
+
+    <!-- publish / download pulses -->
+    <circle r="4.5" fill="#a78bfa" opacity=".9" filter="url(#glow-sm)">
+      <animateMotion dur="3s" repeatCount="indefinite" path="M600,350 L324,115"/>
+    </circle>
+    <circle r="4.5" fill="#00e5ff" opacity=".9" filter="url(#glow-sm)">
+      <animateMotion dur="2.6s" repeatCount="indefinite" path="M1047,440 L600,350"/>
+    </circle>
+    <circle r="4.5" fill="#a78bfa" opacity=".9" filter="url(#glow-sm)">
+      <animateMotion dur="3.4s" repeatCount="indefinite" path="M600,350 L153,440"/>
+    </circle>
+    <circle r="4" fill="#00e5ff" opacity=".8" filter="url(#glow-sm)">
+      <animateMotion dur="3.1s" repeatCount="indefinite" path="M876,115 L600,350"/>
+    </circle>
+
+    <!-- STARNET core -->
+    <ellipse cx="600" cy="350" rx="92" ry="62" fill="none" stroke="rgba(139,92,246,.1)" stroke-width="1" stroke-dasharray="8,4">
+      <animateTransform attributeName="transform" type="rotate" from="0 600 350" to="360 600 350" dur="20s" repeatCount="indefinite"/>
+    </ellipse>
+    <circle cx="600" cy="350" r="17" fill="rgba(139,92,246,.2)" stroke="#8b5cf6" stroke-width="1.5" filter="url(#glow-v)">
+      <animate attributeName="r" values="17;21;17" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <!-- 4-point starburst -->
+    <polygon points="600,332 603,347 618,350 603,353 600,368 597,353 582,350 597,347" fill="#a78bfa" opacity=".95"/>
+  </svg>
+
+  <div class="hero-inner">
+    <div class="hero-kicker">The Decentralized App Store of the Omniverse</div>
+    <h1>Publish the <span>Omniverse.</span></h1>
+    <p class="hero-sub">STARNET is the decentralized registry and asset store for the OASIS Omniverse. Build a holon — an OAPP, Quest, Mission, NFT, World, Template — publish it once, and it goes live in every connected world via the WEB5 STAR API. Versioned. Avatar-signed. Yours forever.</p>
+    <div class="hero-btns">
+      <a href="#cli" class="btn-primary">START PUBLISHING</a>
+      <a href="#holons" class="btn-outline">EXPLORE HOLONS</a>
+      <a href="https://github.com/NextGenSoftwareUK/OASIS" target="_blank" rel="noopener" class="btn-outline-cyan">VIEW ON GITHUB</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT IS STARNET -->
+<section id="what">
+  <div class="section-inner">
+    <div class="what-grid">
+      <div class="what-text reveal">
+        <h2>The <span>npm + App Store</span> of the Metaverse</h2>
+        <p>Every piece of content in the OASIS Omniverse is a <strong>holon</strong> — a self-contained, versioned, Avatar-owned building block. STARNET is where they all live: a decentralized registry where creators publish holons and every world discovers, downloads, and runs them.</p>
+        <p>Build a quest in ODOOM and a studio in OQUAKE can install it. Mint an NFT weapon and it works across every game. Ship a world template and anyone can scaffold from it. Publish once — and it's instantly available across the entire Omniverse through the <a href="https://api.starnet.oasisomniverse.one" target="_blank" rel="noopener" style="color:var(--cyan);text-decoration:none">WEB5 STAR API</a>.</p>
+        <p>No central gatekeeper. Holons are signed by your OASIS Avatar, stored across the OASIS HyperDrive's many providers, and carried with full version history and dependency graphs.</p>
+        <div class="stat-row">
+          <div class="stat-box"><div class="num">16+</div><div class="lbl">HOLON TYPES</div></div>
+          <div class="stat-box"><div class="num">&infin;</div><div class="lbl">CONNECTED WORLDS</div></div>
+          <div class="stat-box"><div class="num">100%</div><div class="lbl">WEB5 NATIVE</div></div>
+          <div class="stat-box"><div class="num">1-click</div><div class="lbl">PUBLISH &amp; INSTALL</div></div>
+        </div>
+      </div>
+      <div class="what-card reveal">
+        <svg viewBox="0 0 480 410" xmlns="http://www.w3.org/2000/svg" style="background:#0d0a24">
+          <!-- card frame -->
+          <rect x="0.5" y="0.5" width="479" height="409" fill="#0d0a24"/>
+          <!-- header -->
+          <rect x="0" y="0" width="480" height="58" fill="rgba(139,92,246,.08)"/>
+          <line x1="0" y1="58" x2="480" y2="58" stroke="rgba(139,92,246,.25)" stroke-width="1"/>
+          <polygon points="34,16 50,25 50,43 34,52 18,43 18,25" fill="rgba(139,92,246,.18)" stroke="#a78bfa" stroke-width="1.4"/>
+          <circle cx="34" cy="34" r="4.5" fill="#a78bfa"/>
+          <text x="64" y="29" font-family="Orbitron,sans-serif" font-size="16" font-weight="700" fill="#ece8ff">KeycardQuest</text>
+          <text x="64" y="47" font-family="Share Tech Mono,monospace" font-size="11" fill="#a8bfd8">v1.2.0 · published by Avatar @david</text>
+          <rect x="372" y="18" width="92" height="24" rx="4" fill="rgba(139,92,246,.15)" stroke="rgba(139,92,246,.4)"/>
+          <text x="418" y="34" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="11" fill="#a78bfa">QUEST · OAPP</text>
+
+          <!-- meta stats row -->
+          <text x="24" y="92" font-family="Share Tech Mono,monospace" font-size="11" fill="#7a8ab0">DOWNLOADS</text>
+          <text x="24" y="112" font-family="Orbitron,sans-serif" font-size="17" font-weight="700" fill="#00e5ff">12.4k</text>
+          <text x="160" y="92" font-family="Share Tech Mono,monospace" font-size="11" fill="#7a8ab0">KARMA RATING</text>
+          <text x="160" y="112" font-family="Orbitron,sans-serif" font-size="17" font-weight="700" fill="#f0a500">★ 4.9</text>
+          <text x="320" y="92" font-family="Share Tech Mono,monospace" font-size="11" fill="#7a8ab0">LIVE IN</text>
+          <text x="320" y="112" font-family="Orbitron,sans-serif" font-size="17" font-weight="700" fill="#00cc88">7 worlds</text>
+
+          <line x1="24" y1="130" x2="456" y2="130" stroke="rgba(139,92,246,.18)" stroke-width="1"/>
+
+          <!-- dependencies -->
+          <text x="24" y="156" font-family="Share Tech Mono,monospace" font-size="11" fill="#7a8ab0" letter-spacing="1">DEPENDENCIES</text>
+          <g font-family="Rajdhani,sans-serif" font-size="14" fill="#c8d6ff">
+            <circle cx="30" cy="178" r="3" fill="#a78bfa"/><text x="42" y="183">OASIS.Avatar.SSO</text><text x="360" y="183" font-family="Share Tech Mono,monospace" font-size="11" fill="#7a8ab0">^4.0.0</text>
+            <circle cx="30" cy="202" r="3" fill="#a78bfa"/><text x="42" y="207">STAR.GeoHotSpot</text><text x="360" y="207" font-family="Share Tech Mono,monospace" font-size="11" fill="#7a8ab0">^2.1.0</text>
+            <circle cx="30" cy="226" r="3" fill="#00e5ff"/><text x="42" y="231">ODOOM.Keycard.NFT</text><text x="360" y="231" font-family="Share Tech Mono,monospace" font-size="11" fill="#7a8ab0">~1.0.3</text>
+          </g>
+
+          <line x1="24" y1="250" x2="456" y2="250" stroke="rgba(139,92,246,.18)" stroke-width="1"/>
+
+          <!-- tags -->
+          <g font-family="Share Tech Mono,monospace" font-size="11">
+            <rect x="24" y="268" width="78" height="22" rx="11" fill="rgba(0,229,255,.08)" stroke="rgba(0,229,255,.25)"/><text x="63" y="283" text-anchor="middle" fill="#00e5ff">horror</text>
+            <rect x="110" y="268" width="64" height="22" rx="11" fill="rgba(0,229,255,.08)" stroke="rgba(0,229,255,.25)"/><text x="142" y="283" text-anchor="middle" fill="#00e5ff">fps</text>
+            <rect x="182" y="268" width="96" height="22" rx="11" fill="rgba(0,229,255,.08)" stroke="rgba(0,229,255,.25)"/><text x="230" y="283" text-anchor="middle" fill="#00e5ff">real-world</text>
+            <rect x="286" y="268" width="74" height="22" rx="11" fill="rgba(0,229,255,.08)" stroke="rgba(0,229,255,.25)"/><text x="323" y="283" text-anchor="middle" fill="#00e5ff">co-op</text>
+          </g>
+
+          <!-- install command -->
+          <rect x="24" y="316" width="432" height="68" rx="8" fill="#070518" stroke="rgba(139,92,246,.3)"/>
+          <text x="40" y="342" font-family="Share Tech Mono,monospace" font-size="12" fill="#5a6a92"># install into your world</text>
+          <text x="40" y="368" font-family="Share Tech Mono,monospace" font-size="13.5"><tspan fill="#a78bfa">star</tspan><tspan fill="#ece8ff"> oapp </tspan><tspan fill="#00e5ff">install</tspan><tspan fill="#ece8ff"> KeycardQuest@1.2.0</tspan></text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOLON TYPES -->
+<section id="holons">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <div class="section-kicker">PUBLISHABLE BUILDING BLOCKS</div>
+      <h2>Everything Is a Holon</h2>
+      <p>From a single NFT to an entire universe, every asset in the Omniverse is a versioned, shareable holon you can publish to and install from STARNET.</p>
+    </div>
+    <div class="holon-grid">
+      <div class="holon-card reveal">
+        <div class="holon-icon">📦</div>
+        <h3>OAPPs</h3>
+        <p>Full OASIS Apps and games — like ODOOM and OQUAKE. Self-contained experiences that ship with all their holons bundled.</p>
+        <span class="cmd">star oapp publish</span>
+      </div>
+      <div class="holon-card reveal">
+        <div class="holon-icon">📜</div>
+        <h3>QUESTS</h3>
+        <p>Gamified missions with objectives, rewards, and karma. Span worlds — start in one game, finish in another.</p>
+        <span class="cmd">star quest publish</span>
+      </div>
+      <div class="holon-card reveal">
+        <div class="holon-icon">🎯</div>
+        <h3>MISSIONS &amp; CHAPTERS</h3>
+        <p>Bundle quests into campaigns and story arcs that unfold across the Omniverse with branching progression.</p>
+        <span class="cmd">star mission publish</span>
+      </div>
+      <div class="holon-card reveal">
+        <div class="holon-icon">💎</div>
+        <h3>NFTs &amp; GeoNFTs</h3>
+        <p>Mint weapons, cosmetics, and collectibles as blockchain-verified NFTs — including geo-located GeoNFTs tied to real places.</p>
+        <span class="cmd">star nft mint</span>
+      </div>
+      <div class="holon-card reveal">
+        <div class="holon-icon">📍</div>
+        <h3>GeoHotSpots</h3>
+        <p>Real-world map locations that trigger content — quests, loot, AR encounters — when a player physically arrives.</p>
+        <span class="cmd">star geohotspot publish</span>
+      </div>
+      <div class="holon-card reveal">
+        <div class="holon-icon">🪐</div>
+        <h3>CELESTIAL BODIES</h3>
+        <p>Planets, moons, stars and superstars — entire explorable worlds and the spaces that hold them, packaged as holons.</p>
+        <span class="cmd">star celestialbody publish</span>
+      </div>
+      <div class="holon-card reveal">
+        <div class="holon-icon">🌌</div>
+        <h3>CELESTIAL SPACES</h3>
+        <p>Galaxies, solar systems and universes — the macro-structures of the Omniverse that contain celestial bodies.</p>
+        <span class="cmd">star celestialspace publish</span>
+      </div>
+      <div class="holon-card reveal">
+        <div class="holon-icon">🧬</div>
+        <h3>ZOMES &amp; HOLONS</h3>
+        <p>The raw data layer. Zomes group holons; holons are the universal object every other type is built from.</p>
+        <span class="cmd">star holon publish</span>
+      </div>
+      <div class="holon-card reveal">
+        <div class="holon-icon">🧩</div>
+        <h3>TEMPLATES</h3>
+        <p>Project scaffolds for any holon type. Spin up a new OAPP, quest, or world pre-wired and ready to build.</p>
+        <span class="cmd">star template publish</span>
+      </div>
+      <div class="holon-card reveal">
+        <div class="holon-icon">📚</div>
+        <h3>LIBRARIES &amp; RUNTIMES</h3>
+        <p>Shareable code libraries and STAR runtimes that other holons depend on — resolved automatically on install.</p>
+        <span class="cmd">star library publish</span>
+      </div>
+      <div class="holon-card reveal">
+        <div class="holon-icon">🔌</div>
+        <h3>PLUGINS &amp; PROVIDERS</h3>
+        <p>Extend the OASIS itself — new storage providers, blockchains, and integrations plugged into the HyperDrive.</p>
+        <span class="cmd">star plugin publish</span>
+      </div>
+      <div class="holon-card reveal">
+        <div class="holon-icon">🎒</div>
+        <h3>INVENTORY ITEMS</h3>
+        <p>Weapons, armour, keycards, powerups — cross-game items that persist with the player's Avatar everywhere.</p>
+        <span class="cmd">star inventoryitem publish</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLI -->
+<section id="cli">
+  <div class="section-inner">
+    <div class="dev-grid">
+      <div class="dev-text reveal">
+        <h2>One CLI. The Whole <span>Omniverse.</span></h2>
+        <p>The <strong>STAR CLI</strong> is your gateway to STARNET. Authenticate once with your OASIS Avatar, then create, publish, search, and install holons from a single command line — with versioning, dependency resolution, and decentralized storage handled for you.</p>
+        <p>Publishing is one command. Your holon is signed to your Avatar, versioned semantically, replicated across the OASIS HyperDrive, and instantly discoverable by every world in the Omniverse.</p>
+        <div class="tech-pills">
+          <span class="tech-pill">AVATAR SSO</span>
+          <span class="tech-pill">SEMANTIC VERSIONING</span>
+          <span class="tech-pill">DEPENDENCY RESOLUTION</span>
+          <span class="tech-pill">DECENTRALIZED STORAGE</span>
+          <span class="tech-pill">WEB5 STAR API</span>
+          <span class="tech-pill">WIN · LINUX · macOS</span>
+        </div>
+        <div class="dev-links">
+          <a href="https://github.com/NextGenSoftwareUK/OASIS/releases/tag/STAR-API-CLIENT-v1.0.0" target="_blank" rel="noopener" class="btn-primary">GET THE STAR CLI</a>
+          <a href="https://api.starnet.oasisomniverse.one" target="_blank" rel="noopener" class="btn-outline-cyan">WEB5 STAR API</a>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="term">
+          <div class="term-bar">
+            <span class="term-dot r"></span><span class="term-dot y"></span><span class="term-dot g"></span>
+            <span class="term-title">star — publishing to STARNET</span>
+          </div>
+<pre class="code-block"><span class="cm"># Authenticate once with your OASIS Avatar (SSO)</span>
+<span class="pr">$</span> <span class="cmd">star</span> avatar login
+<span class="ok">✔ Signed in as Avatar @david · karma 8,420</span>
+
+<span class="cm"># Scaffold a new OAPP from a STARNET template</span>
+<span class="pr">$</span> <span class="cmd">star</span> oapp create <span class="str">"Keycard Quest"</span> --template fps
+<span class="ok">✔ Created ./KeycardQuest from template fps@3.2.0</span>
+
+<span class="cm"># Publish it — versioned, signed & replicated</span>
+<span class="pr">$</span> <span class="cmd">star</span> oapp publish ./KeycardQuest
+<span class="ok">✔ Published KeycardQuest@1.0.0 to STARNET</span>
+<span class="ok">  ↳ stored across 5 HyperDrive providers</span>
+
+<span class="cm"># Anyone in the Omniverse can now find it...</span>
+<span class="pr">$</span> <span class="cmd">star</span> search <span class="str">"horror quest"</span>
+  KeycardQuest@1.0.0   ★4.9   12.4k installs
+
+<span class="cm"># ...and install it into their own world</span>
+<span class="pr">$</span> <span class="cmd">star</span> oapp install KeycardQuest@1.0.0
+<span class="ok">✔ Installed + resolved 3 dependencies</span>
+<span class="ok">✔ Live via WEB5 STAR API</span></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FLOW -->
+<section id="flow">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <div class="section-kicker">HOW PUBLISHING WORKS</div>
+      <h2>From Idea to Every World in Five Steps</h2>
+      <p>STARNET handles versioning, signing, storage, and distribution — you just build and publish.</p>
+    </div>
+    <div class="flow-strip reveal">
+      <div class="flow-step">
+        <div class="fs-num">STEP 01</div>
+        <div class="fs-icon">🛠️</div>
+        <h3>CREATE</h3>
+        <p>Scaffold a holon from a STARNET template with the STAR CLI — OAPP, quest, NFT, world, anything.</p>
+      </div>
+      <div class="flow-step">
+        <div class="fs-num">STEP 02</div>
+        <div class="fs-icon">🚀</div>
+        <h3>PUBLISH</h3>
+        <p>One command pushes it to STARNET — semantically versioned and signed to your OASIS Avatar.</p>
+      </div>
+      <div class="flow-step">
+        <div class="fs-num">STEP 03</div>
+        <div class="fs-icon">🌐</div>
+        <h3>STORE</h3>
+        <p>The holon is replicated across the OASIS HyperDrive's many providers — no single point of failure.</p>
+      </div>
+      <div class="flow-step">
+        <div class="fs-num">STEP 04</div>
+        <div class="fs-icon">🔍</div>
+        <h3>DISCOVER</h3>
+        <p>Every creator and world can search the decentralized registry by name, type, tag, or karma rating.</p>
+      </div>
+      <div class="flow-step">
+        <div class="fs-num">STEP 05</div>
+        <div class="fs-icon">▶️</div>
+        <h3>RUN</h3>
+        <p>Install pulls the holon and its dependencies into any world — live instantly via the WEB5 STAR API.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ARCHITECTURE -->
+<section id="architecture">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <div class="section-kicker">WHERE STARNET FITS</div>
+      <h2>The Registry Powering the WEB5 STAR API</h2>
+      <p>STARNET sits between the people who create holons and the worlds that run them — the decentralized store that makes "publish once, live everywhere" real.</p>
+    </div>
+    <div class="arch-wrap reveal">
+      <svg viewBox="0 0 900 470" xmlns="http://www.w3.org/2000/svg" style="width:100%;min-width:580px;display:block">
+        <defs>
+          <filter id="ag-glow" x="-5%" y="-10%" width="110%" height="120%">
+            <feGaussianBlur stdDeviation="3" result="b"/>
+            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+
+        <!-- ═══ CREATOR TIER ═══ -->
+        <rect x="15" y="15" width="870" height="64" rx="6" fill="rgba(139,92,246,.08)" stroke="rgba(139,92,246,.35)" stroke-width="1"/>
+        <text x="30" y="35" font-family="Share Tech Mono,monospace" font-size="8" fill="rgba(167,139,250,.6)" letter-spacing="1.5">CREATORS</text>
+        <text x="450" y="42" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="14" fill="#a78bfa" font-weight="700">DEVELOPERS · STUDIOS · ARTISTS · PLAYERS</text>
+        <text x="450" y="64" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="9.5" fill="#a8bfd8">build holons — OAPPs · Quests · Missions · NFTs · Worlds · Templates · Libraries</text>
+
+        <!-- connector down -->
+        <line x1="450" y1="79" x2="450" y2="120" stroke="rgba(167,139,250,.45)" stroke-width="1.2" stroke-dasharray="3,2"/>
+        <polygon points="446,118 450,126 454,118" fill="rgba(167,139,250,.6)"/>
+        <text x="468" y="103" font-family="Share Tech Mono,monospace" font-size="10" fill="rgba(167,139,250,.7)">star publish ▸</text>
+        <circle r="3" fill="#a78bfa" opacity=".85"><animateMotion dur="1.6s" repeatCount="indefinite" path="M450,79 L450,118"/></circle>
+
+        <!-- ═══ STARNET REGISTRY ═══ -->
+        <rect x="15" y="128" width="870" height="110" rx="7" fill="rgba(139,92,246,.13)" stroke="#8b5cf6" stroke-width="1.5" filter="url(#ag-glow)"/>
+        <text x="30" y="146" font-family="Share Tech Mono,monospace" font-size="8" fill="rgba(167,139,250,.55)" letter-spacing="1.5">DECENTRALIZED REGISTRY &amp; ASSET STORE</text>
+        <text x="450" y="166" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="17" fill="#a78bfa" font-weight="700" letter-spacing="2">STARNET</text>
+        <text x="450" y="187" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="9.5" fill="#a8bfd8">VERSIONING · DEPENDENCY GRAPH · AVATAR-SIGNED · KARMA RATINGS · SEARCH · OASIS HYPERDRIVE STORAGE</text>
+        <rect x="318" y="206" width="118" height="20" rx="4" fill="rgba(139,92,246,.16)" stroke="rgba(139,92,246,.35)"/>
+        <text x="377" y="220" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="9" fill="#a78bfa">1-click publish</text>
+        <rect x="446" y="206" width="118" height="20" rx="4" fill="rgba(139,92,246,.16)" stroke="rgba(139,92,246,.35)"/>
+        <text x="505" y="220" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="9" fill="#a78bfa">no gatekeeper</text>
+
+        <!-- connectors to bottom tier -->
+        <line x1="225" y1="238" x2="225" y2="278" stroke="rgba(139,92,246,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+        <line x1="675" y1="238" x2="675" y2="278" stroke="rgba(0,229,255,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+        <polygon points="221,275 225,283 229,275" fill="rgba(139,92,246,.5)"/>
+        <polygon points="671,275 675,283 679,275" fill="rgba(0,229,255,.5)"/>
+        <text x="450" y="262" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="10" fill="rgba(168,191,216,.7)">served &amp; resolved via WEB5 STAR API</text>
+        <circle r="3" fill="#a78bfa" opacity=".85"><animateMotion dur="1.5s" repeatCount="indefinite" path="M225,238 L225,275"/></circle>
+        <circle r="3" fill="#00e5ff" opacity=".85"><animateMotion dur="1.5s" begin="0.7s" repeatCount="indefinite" path="M675,238 L675,275"/></circle>
+
+        <!-- ═══ DELIVERY TIER ═══ -->
+        <rect x="15" y="285" width="430" height="170" rx="7" fill="rgba(139,92,246,.07)" stroke="rgba(139,92,246,.4)" stroke-width="1.5"/>
+        <text x="30" y="303" font-family="Share Tech Mono,monospace" font-size="8" fill="rgba(167,139,250,.5)" letter-spacing="1.5">DELIVERY</text>
+        <text x="230" y="320" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="13" fill="#a78bfa" font-weight="700">WEB5 STAR API</text>
+        <text x="230" y="337" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="9" fill="rgba(167,139,250,.5)">api.starnet.oasisomniverse.one</text>
+        <text x="35" y="361" font-family="Rajdhani,sans-serif" font-size="12" fill="#a8bfd8">→  Holon hydration &amp; resolution</text>
+        <text x="35" y="381" font-family="Rajdhani,sans-serif" font-size="12" fill="#a8bfd8">→  Quest &amp; Mission delivery</text>
+        <text x="35" y="401" font-family="Rajdhani,sans-serif" font-size="12" fill="#a8bfd8">→  GeoHotSpot resolution</text>
+        <text x="35" y="421" font-family="Rajdhani,sans-serif" font-size="12" fill="#a8bfd8">→  Dependency &amp; version resolution</text>
+        <text x="35" y="441" font-family="Rajdhani,sans-serif" font-size="12" fill="#a8bfd8">→  Cross-world progress sync</text>
+
+        <rect x="455" y="285" width="430" height="170" rx="7" fill="rgba(0,229,255,.06)" stroke="rgba(0,229,255,.4)" stroke-width="1.5"/>
+        <text x="470" y="303" font-family="Share Tech Mono,monospace" font-size="8" fill="rgba(0,229,255,.45)" letter-spacing="1.5">CONSUMERS</text>
+        <text x="670" y="320" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="13" fill="#00e5ff" font-weight="700">EVERY OASIS WORLD</text>
+        <text x="670" y="337" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="9" fill="rgba(0,229,255,.5)">OGEngine · Our World · ODOOM · OQUAKE</text>
+        <text x="475" y="361" font-family="Rajdhani,sans-serif" font-size="12" fill="#a8bfd8">→  Pull &amp; run published holons</text>
+        <text x="475" y="381" font-family="Rajdhani,sans-serif" font-size="12" fill="#a8bfd8">→  Shared cross-game inventory</text>
+        <text x="475" y="401" font-family="Rajdhani,sans-serif" font-size="12" fill="#a8bfd8">→  Avatar SSO &amp; karma</text>
+        <text x="475" y="421" font-family="Rajdhani,sans-serif" font-size="12" fill="#a8bfd8">→  Live content &amp; quest updates</text>
+        <text x="475" y="441" font-family="Rajdhani,sans-serif" font-size="12" fill="#a8bfd8">→  Real-world item discovery</text>
+      </svg>
+    </div>
+    <!-- Equation band -->
+    <div class="arch-eq reveal">
+      <span class="arch-eq-pill violet">PUBLISH</span>
+      <span class="arch-eq-op">+</span>
+      <span class="arch-eq-pill cyan">VERSION &amp; SIGN</span>
+      <span class="arch-eq-op">+</span>
+      <span class="arch-eq-pill gold">DECENTRALIZED STORAGE</span>
+      <span class="arch-eq-op">=</span>
+      <span class="arch-eq-result">STARNET</span>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section id="roadmap">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <div class="section-kicker">THE ROAD AHEAD</div>
+      <h2>Building the Omniverse Registry</h2>
+      <p>STARNET is live today through the STAR CLI and WEB5 STAR API — and growing into the full decentralized marketplace of the Omniverse.</p>
+    </div>
+    <div class="rm-grid">
+      <div class="rm-tile active reveal">
+        <span class="rm-badge active">LIVE</span>
+        <div class="rm-kicker violet">SHIPPING NOW</div>
+        <h3>STAR CLI &amp; STARNET</h3>
+        <p>Create, publish, search, download, and install every holon type from the command line — versioned and Avatar-signed.</p>
+      </div>
+      <div class="rm-tile active reveal">
+        <span class="rm-badge active">LIVE</span>
+        <div class="rm-kicker violet">SHIPPING NOW</div>
+        <h3>WEB5 STAR API</h3>
+        <p>Programmatic access to the entire registry — hydrate holons, resolve dependencies, and deliver content to any world.</p>
+      </div>
+      <div class="rm-tile active reveal">
+        <span class="rm-badge active">LIVE</span>
+        <div class="rm-kicker violet">SHIPPING NOW</div>
+        <h3>HyperDrive Storage</h3>
+        <p>Holons are auto-replicated across many OASIS providers — IPFS, Holochain, chains and more — with auto-failover.</p>
+      </div>
+      <div class="rm-tile soon reveal">
+        <span class="rm-badge soon">SOON</span>
+        <div class="rm-kicker cyan">NEXT</div>
+        <h3>STARNET Web Portal</h3>
+        <p>Browse, search, and install holons from the browser — a visual storefront for the whole Omniverse registry.</p>
+      </div>
+      <div class="rm-tile soon reveal">
+        <span class="rm-badge soon">SOON</span>
+        <div class="rm-kicker cyan">NEXT</div>
+        <h3>Dependency Graph &amp; SemVer</h3>
+        <p>Full semantic-version ranges, lockfiles, and a visual dependency graph for every holon and its holon tree.</p>
+      </div>
+      <div class="rm-tile future reveal">
+        <div class="rm-kicker dim">ON THE HORIZON</div>
+        <h3>Creator Marketplace</h3>
+        <p>A decentralized marketplace with OASIS token economy, creator royalties, and karma-weighted discovery and ranking.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="section-inner">
+    <div class="cta-box reveal">
+      <h2>Publish Your First <span>Holon</span></h2>
+      <p>Grab the STAR CLI, sign in with your OASIS Avatar, and ship a holon to the entire Omniverse in minutes. Build once — live everywhere.</p>
+      <div class="cta-btns">
+        <a href="https://github.com/NextGenSoftwareUK/OASIS/releases/tag/STAR-API-CLIENT-v1.0.0" target="_blank" rel="noopener" class="btn-primary">GET THE STAR CLI</a>
+        <a href="https://api.starnet.oasisomniverse.one" target="_blank" rel="noopener" class="btn-outline">WEB5 STAR API</a>
+        <a href="https://github.com/NextGenSoftwareUK/OASIS" target="_blank" rel="noopener" class="btn-outline-cyan">VIEW ON GITHUB</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="logo-txt">STARNET</div>
+        <p>The decentralized app store of the OASIS Omniverse. Publish holons once — versioned, Avatar-signed, and live in every connected world.</p>
+        <div class="social-row">
+          <a href="https://github.com/NextGenSoftwareUK/OASIS" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://discord.gg/oasisomniverse" target="_blank" rel="noopener">Discord</a>
+          <a href="https://twitter.com/OasisOmniverse" target="_blank" rel="noopener">X / Twitter</a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>ECOSYSTEM</h4>
+        <ul>
+          <li><a href="https://oasisomniverse.one" target="_blank" rel="noopener">OASIS Omniverse</a></li>
+          <li><a href="https://ogengine.oasisomniverse.one" target="_blank" rel="noopener">OGEngine</a></li>
+          <li><a href="https://ourworld.oasisomniverse.one" target="_blank" rel="noopener">Our World</a></li>
+          <li><a href="https://odoom.oasisomniverse.one" target="_blank" rel="noopener">ODOOM</a></li>
+          <li><a href="https://oquake.oasisomniverse.one" target="_blank" rel="noopener">OQUAKE</a></li>
+          <li><a href="https://holonet.oasisomniverse.one" target="_blank" rel="noopener">HoloNET</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>DEVELOPERS</h4>
+        <ul>
+          <li><a href="https://github.com/NextGenSoftwareUK/OASIS/releases/tag/STAR-API-CLIENT-v1.0.0" target="_blank" rel="noopener">STAR CLI</a></li>
+          <li><a href="https://api.starnet.oasisomniverse.one" target="_blank" rel="noopener">WEB5 STAR API</a></li>
+          <li><a href="https://api.web4.oasisomniverse.one" target="_blank" rel="noopener">WEB4 OASIS API</a></li>
+          <li><a href="https://github.com/NextGenSoftwareUK/OASIS" target="_blank" rel="noopener">GitHub Repo</a></li>
+          <li><a href="https://founders.oasisomniverse.one" target="_blank" rel="noopener">Founders NFT</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>COMMUNITY</h4>
+        <ul>
+          <li><a href="https://discord.gg/oasisomniverse" target="_blank" rel="noopener">Discord</a></li>
+          <li><a href="https://twitter.com/OasisOmniverse" target="_blank" rel="noopener">X / Twitter</a></li>
+          <li><a href="https://t.me/oasisomniverse" target="_blank" rel="noopener">Telegram</a></li>
+          <li><a href="https://www.youtube.com/channel/UC0_O4RwdY3lq1m3-K-njUxA" target="_blank" rel="noopener">YouTube Our World Legacy</a></li>
+          <li><a href="https://founders.oasisomniverse.one" target="_blank" rel="noopener">Founders NFT</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>&copy; 2025 NextGen Software Ltd. All rights reserved.</p>
+      <p>Part of the <a href="https://oasisomniverse.one" target="_blank" rel="noopener">OASIS Omniverse</a> ecosystem.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── STARS ──
+(function(){
+  const c=document.getElementById('stars'),ctx=c.getContext('2d');
+  let stars=[];
+  function resize(){c.width=innerWidth;c.height=innerHeight;stars=Array.from({length:200},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:Math.random()*1.4+.3,o:Math.random()*.8+.2,s:Math.random()*.6+.2}))}
+  function draw(){ctx.clearRect(0,0,c.width,c.height);stars.forEach(s=>{s.o+=(.003*s.s*(Math.random()>.5?1:-1));s.o=Math.max(.1,Math.min(1,s.o));ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fillStyle=`rgba(210,205,255,${s.o})`;ctx.fill()});requestAnimationFrame(draw)}
+  window.addEventListener('resize',resize);resize();draw();
+})();
+
+// ── SCROLL REVEAL ──
+(function(){
+  const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}}),{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+})();
+</script>
+</body>
+</html>
