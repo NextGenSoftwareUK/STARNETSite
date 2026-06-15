@@ -40,18 +40,18 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 .nav-logo{width:36px;height:36px}
 .nav-brand span{font-family:'Orbitron',sans-serif;font-size:1.1rem;font-weight:700;color:var(--violet-light);letter-spacing:.12em}
 .nav-links{display:flex;gap:2rem;list-style:none}
-.nav-links a{color:var(--text-dim);text-decoration:none;font-weight:600;font-size:.95rem;letter-spacing:.06em;transition:color .2s}
+.nav-links a{color:#a8bfd8;text-decoration:none;font-weight:600;font-size:.95rem;letter-spacing:.06em;transition:color .2s}
 .nav-links a:hover{color:var(--violet-light)}
 .nav-cta{background:var(--violet);color:#fff;padding:.45rem 1.2rem;border-radius:4px;font-family:'Orbitron',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-decoration:none;transition:opacity .2s}
 .nav-cta:hover{opacity:.85}
 
 /* ── HERO ── */
-#hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:8rem 2rem 5rem;overflow:hidden;z-index:1}
-.hero-inner{position:relative;z-index:2;max-width:920px}
+#hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:8rem 2rem 5rem;overflow:hidden;z-index:1}
+.hero-inner{max-width:920px}
 .hero-kicker{display:inline-block;font-family:'Share Tech Mono',monospace;font-size:.85rem;letter-spacing:.25em;color:var(--violet-light);border:1px solid var(--violet);padding:.35rem 1.1rem;border-radius:2px;margin-bottom:1.8rem;text-transform:uppercase}
 #hero h1{font-family:'Orbitron',sans-serif;font-size:clamp(2.4rem,6vw,4.2rem);font-weight:900;line-height:1.1;margin-bottom:1.4rem;text-shadow:0 0 40px var(--glow)}
 #hero h1 span{color:var(--violet-light)}
-.hero-sub{font-size:1.2rem;color:var(--text-dim);max-width:660px;margin:0 auto 2.8rem;line-height:1.7}
+.hero-sub{font-size:1.2rem;color:#a8bfd8;max-width:660px;margin:0 auto 2.8rem;line-height:1.7}
 .hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
 .btn-primary{background:var(--violet);color:#fff;padding:.75rem 2rem;border-radius:5px;font-family:'Orbitron',sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.1em;text-decoration:none;transition:opacity .2s,box-shadow .2s;box-shadow:0 0 18px rgba(139,92,246,.5)}
 .btn-primary:hover{opacity:.9;box-shadow:0 0 30px rgba(139,92,246,.7)}
@@ -61,7 +61,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 .btn-outline-cyan:hover{background:rgba(0,229,255,.1)}
 
 /* hero SVG network */
-#hero-svg{position:absolute;inset:0;width:100%;height:100%;z-index:1;opacity:.92}
+#hero-svg{order:10;display:block;width:100%;max-width:860px;margin-top:40px;pointer-events:none;opacity:.85}
 
 /* ── SECTIONS ── */
 section{position:relative;z-index:1}
@@ -69,20 +69,20 @@ section{position:relative;z-index:1}
 .section-head{text-align:center;margin-bottom:3.5rem}
 .section-kicker{display:inline-block;font-family:'Share Tech Mono',monospace;font-size:.78rem;letter-spacing:.22em;color:var(--violet-light);margin-bottom:.9rem;text-transform:uppercase}
 .section-head h2{font-family:'Orbitron',sans-serif;font-size:clamp(1.6rem,3.5vw,2.5rem);font-weight:700;margin-bottom:.9rem}
-.section-head p{color:var(--text-dim);max-width:660px;margin:0 auto;font-size:1.05rem}
+.section-head p{color:#a8bfd8;max-width:660px;margin:0 auto;font-size:1.05rem}
 
 /* ── WHAT IS STARNET ── */
 #what{padding:6rem 0}
 .what-grid{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center}
 .what-text h2{font-family:'Orbitron',sans-serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;margin-bottom:1.2rem}
 .what-text h2 span{color:var(--violet-light)}
-.what-text p{color:var(--text-dim);line-height:1.8;margin-bottom:1rem;font-size:1.05rem}
+.what-text p{color:#a8bfd8;line-height:1.8;margin-bottom:1rem;font-size:1.05rem}
 .what-card{border-radius:12px;overflow:hidden;border:1px solid var(--border);box-shadow:0 0 50px rgba(139,92,246,.16)}
 .what-card svg{width:100%;display:block}
 .stat-row{display:flex;gap:1.2rem;margin-top:1.8rem;flex-wrap:wrap}
 .stat-box{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:.9rem 1.2rem;flex:1;min-width:120px;text-align:center}
 .stat-box .num{font-family:'Orbitron',sans-serif;font-size:1.5rem;font-weight:700;color:var(--violet-light)}
-.stat-box .lbl{font-size:.78rem;color:var(--text-dim);letter-spacing:.05em;margin-top:.2rem}
+.stat-box .lbl{font-size:.78rem;color:#a8bfd8;letter-spacing:.05em;margin-top:.2rem}
 
 /* ── HOLON TYPES ── */
 #holons{padding:6rem 0;background:linear-gradient(180deg,transparent,rgba(139,92,246,.05),transparent)}
@@ -91,7 +91,7 @@ section{position:relative;z-index:1}
 .holon-card:hover{border-color:var(--violet);box-shadow:0 0 22px rgba(139,92,246,.2);transform:translateY(-3px)}
 .holon-icon{font-size:1.9rem;margin-bottom:.8rem}
 .holon-card h3{font-family:'Orbitron',sans-serif;font-size:.86rem;font-weight:700;color:var(--violet-light);letter-spacing:.05em;margin-bottom:.55rem}
-.holon-card p{color:var(--text-dim);font-size:.92rem;line-height:1.6}
+.holon-card p{color:#a8bfd8;font-size:.92rem;line-height:1.6}
 .holon-card .cmd{display:inline-block;margin-top:.7rem;font-family:'Share Tech Mono',monospace;font-size:.74rem;color:var(--cyan);background:rgba(0,229,255,.07);border:1px solid rgba(0,229,255,.18);padding:.2rem .55rem;border-radius:4px}
 
 /* ── CLI / DEVELOPER ── */
@@ -99,12 +99,12 @@ section{position:relative;z-index:1}
 .dev-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
 .dev-text h2{font-family:'Orbitron',sans-serif;font-size:clamp(1.4rem,3vw,2.2rem);font-weight:700;margin-bottom:1rem}
 .dev-text h2 span{color:var(--violet-light)}
-.dev-text p{color:var(--text-dim);line-height:1.8;margin-bottom:1rem;font-size:1.02rem}
+.dev-text p{color:#a8bfd8;line-height:1.8;margin-bottom:1rem;font-size:1.02rem}
 .term{background:#070518;border:1px solid rgba(139,92,246,.25);border-radius:8px;overflow:hidden;box-shadow:0 0 40px rgba(139,92,246,.1)}
 .term-bar{display:flex;align-items:center;gap:.4rem;padding:.6rem .9rem;background:rgba(139,92,246,.08);border-bottom:1px solid rgba(139,92,246,.18)}
 .term-dot{width:11px;height:11px;border-radius:50%}
 .term-dot.r{background:#ff5f56}.term-dot.y{background:#ffbd2e}.term-dot.g{background:#27c93f}
-.term-title{margin-left:.6rem;font-family:'Share Tech Mono',monospace;font-size:.74rem;color:var(--text-dim);letter-spacing:.08em}
+.term-title{margin-left:.6rem;font-family:'Share Tech Mono',monospace;font-size:.74rem;color:#a8bfd8;letter-spacing:.08em}
 .code-block{padding:1.4rem;font-family:'Share Tech Mono',monospace;font-size:.82rem;line-height:1.85;color:#c8d6ff;overflow-x:auto;white-space:pre-wrap;word-break:break-word;margin:0}
 .code-block .cm{color:#5a6a92}
 .code-block .pr{color:var(--violet-light)}
@@ -124,7 +124,7 @@ section{position:relative;z-index:1}
 .flow-step .fs-num{font-family:'Orbitron',sans-serif;font-size:.72rem;color:var(--violet-light);font-weight:700;margin-bottom:.5rem;letter-spacing:.12em}
 .flow-step .fs-icon{font-size:1.8rem;margin-bottom:.6rem}
 .flow-step h3{font-family:'Orbitron',sans-serif;font-size:.84rem;font-weight:700;margin-bottom:.5rem;letter-spacing:.04em}
-.flow-step p{font-size:.85rem;color:var(--text-dim);line-height:1.5}
+.flow-step p{font-size:.85rem;color:#a8bfd8;line-height:1.5}
 
 /* ── ARCHITECTURE ── */
 #architecture{padding:6rem 0;background:linear-gradient(180deg,transparent,rgba(0,0,0,.25),transparent)}
@@ -134,7 +134,7 @@ section{position:relative;z-index:1}
 .arch-eq-pill.violet{background:rgba(139,92,246,.12);color:var(--violet-light);border:1px solid rgba(139,92,246,.35)}
 .arch-eq-pill.cyan{background:rgba(0,229,255,.1);color:var(--cyan);border:1px solid rgba(0,229,255,.3)}
 .arch-eq-pill.gold{background:rgba(240,165,0,.1);color:var(--gold);border:1px solid rgba(240,165,0,.3)}
-.arch-eq-op{font-family:'Orbitron',sans-serif;font-size:1.1rem;color:var(--text-dim);font-weight:700}
+.arch-eq-op{font-family:'Orbitron',sans-serif;font-size:1.1rem;color:#a8bfd8;font-weight:700}
 .arch-eq-result{font-family:'Orbitron',sans-serif;font-size:.95rem;font-weight:900;color:var(--violet-light);letter-spacing:.14em;text-shadow:0 0 12px rgba(139,92,246,.5)}
 
 /* ── ROADMAP ── */
@@ -149,9 +149,9 @@ section{position:relative;z-index:1}
 .rm-kicker{font-family:'Share Tech Mono',monospace;font-size:.68rem;letter-spacing:.2em;margin-bottom:.8rem;font-weight:700}
 .rm-kicker.violet{color:var(--violet-light)}
 .rm-kicker.cyan{color:var(--cyan)}
-.rm-kicker.dim{color:var(--text-dim)}
+.rm-kicker.dim{color:#a8bfd8}
 .rm-tile h3{font-family:'Orbitron',sans-serif;font-size:.95rem;font-weight:700;margin-bottom:.7rem}
-.rm-tile p{color:var(--text-dim);font-size:.9rem;line-height:1.6}
+.rm-tile p{color:#a8bfd8;font-size:.9rem;line-height:1.6}
 .rm-badge{position:absolute;top:1.2rem;right:1.2rem;font-family:'Share Tech Mono',monospace;font-size:.62rem;padding:.2rem .55rem;border-radius:2px}
 .rm-badge.active{background:rgba(139,92,246,.2);color:var(--violet-light);border:1px solid rgba(139,92,246,.4)}
 .rm-badge.soon{background:rgba(0,229,255,.15);color:var(--cyan);border:1px solid rgba(0,229,255,.3)}
@@ -161,27 +161,29 @@ section{position:relative;z-index:1}
 .cta-box{background:linear-gradient(135deg,rgba(139,92,246,.12),rgba(0,229,255,.06));border:1px solid rgba(139,92,246,.3);border-radius:16px;padding:4rem 3rem;text-align:center;max-width:800px;margin:0 auto}
 .cta-box h2{font-family:'Orbitron',sans-serif;font-size:clamp(1.5rem,3.5vw,2.5rem);font-weight:700;margin-bottom:1rem}
 .cta-box h2 span{color:var(--violet-light)}
-.cta-box p{color:var(--text-dim);font-size:1.1rem;margin-bottom:2.2rem;max-width:560px;margin-left:auto;margin-right:auto}
+.cta-box p{color:#a8bfd8;font-size:1.1rem;margin-bottom:2.2rem;max-width:560px;margin-left:auto;margin-right:auto}
 .cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
 
 /* ── FOOTER ── */
 footer{background:var(--surface);border-top:1px solid var(--border);padding:4rem 2rem 2rem;--text-dim:#a8bfd8}
-.foot-inner{max-width:1180px;margin:0 auto}
-.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem;margin-bottom:3rem}
+.foot-inner{max-width:1400px;margin:0 auto;padding:0 1rem}
+.foot-brand{margin-bottom:3.5rem;text-align:center}
+.foot-brand p{max-width:none;margin:0 auto 1rem}
+.foot-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1.5rem;margin-bottom:3rem}
 .foot-brand .logo-txt{font-family:'Orbitron',sans-serif;font-size:1rem;font-weight:700;color:var(--violet-light);letter-spacing:.12em;margin-bottom:.6rem}
-.foot-brand p{color:var(--text-dim);font-size:.88rem;line-height:1.7;max-width:250px;margin-bottom:1.2rem}
+.foot-brand p{color:#a8bfd8;font-size:.88rem;line-height:1.6;max-width:none;margin-bottom:1.2rem}
 .social-row{display:flex;gap:.7rem;flex-wrap:wrap}
-.social-row a{display:inline-block;font-family:'Share Tech Mono',monospace;font-size:.72rem;letter-spacing:.1em;color:var(--text-dim);border:1px solid rgba(168,191,216,.25);padding:.35rem .75rem;border-radius:4px;text-decoration:none;transition:border-color .2s,color .2s}
+.social-row a{display:inline-block;font-family:'Share Tech Mono',monospace;font-size:.72rem;letter-spacing:.1em;color:#a8bfd8;border:1px solid rgba(168,191,216,.25);padding:.35rem .75rem;border-radius:4px;text-decoration:none;transition:border-color .2s,color .2s}
 .social-row a:hover{border-color:var(--violet);color:var(--violet-light)}
-.foot-col h4{font-family:'Orbitron',sans-serif;font-size:.72rem;letter-spacing:.15em;font-weight:700;color:var(--text);margin-bottom:1rem;text-transform:uppercase}
+.foot-col h4{font-family:'Orbitron',sans-serif;font-size:.72rem;letter-spacing:.15em;font-weight:700;color:var(--violet-light);margin-bottom:1rem;text-transform:uppercase}
 .foot-col ul{list-style:none}
-.foot-col ul li{margin-bottom:.5rem}
-.foot-col ul li a{color:var(--text-dim);text-decoration:none;font-size:.9rem;transition:color .2s}
-.foot-col ul li a:hover{color:var(--violet-light)}
+.foot-col ul li{margin-bottom:.25rem}
+.foot-col ul li a{color:#a8bfd8;text-decoration:none;font-size:.9rem;transition:color .2s}
+footer a:hover{color:var(--violet-light);filter:drop-shadow(0 0 8px rgba(167,139,250,1)) drop-shadow(0 0 20px rgba(167,139,250,.8)) drop-shadow(0 0 40px rgba(167,139,250,.4))}
 .foot-bottom{border-top:1px solid var(--border);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
-.foot-bottom p{color:var(--text-dim);font-size:.82rem}
-.foot-bottom a{color:var(--text-dim);text-decoration:none}
-.foot-bottom a:hover{color:var(--violet-light)}
+.foot-bottom p{color:#a8bfd8;font-size:.82rem}
+.foot-bottom a{color:#a8bfd8;text-decoration:none}
+
 
 /* ── SCROLL REVEAL ── */
 .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
@@ -201,6 +203,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:4rem
   .rm-grid,.foot-grid{grid-template-columns:1fr}
   .hero-btns,.dev-links,.cta-btns{flex-direction:column;align-items:center}
 }
+a:hover{filter:drop-shadow(0 0 8px rgba(167,139,250,1)) drop-shadow(0 0 20px rgba(167,139,250,.8)) drop-shadow(0 0 40px rgba(167,139,250,.4))}
 </style>
 </head>
 <body>
@@ -238,7 +241,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:4rem
 
 <!-- HERO -->
 <section id="hero">
-  <svg id="hero-svg" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+  <svg id="hero-svg" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <radialGradient id="rg1" cx="50%" cy="50%" r="50%">
         <stop offset="0%" stop-color="#8b5cf6" stop-opacity=".18"/>
@@ -507,7 +510,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:4rem
           <span class="tech-pill">WIN · LINUX · macOS</span>
         </div>
         <div class="dev-links">
-          <a href="https://github.com/NextGenSoftwareUK/OASIS/releases/tag/STAR-API-CLIENT-v1.0.0" target="_blank" rel="noopener" class="btn-primary">GET THE STAR CLI</a>
+          <a href="https://github.com/NextGenSoftwareUK/OASIS/releases/tag/STAR-ODK-Runtime-v3.5.0" target="_blank" rel="noopener" class="btn-primary">GET THE STAR CLI</a>
           <a href="https://api.starnet.oasisomniverse.one" target="_blank" rel="noopener" class="btn-outline-cyan">WEB5 STAR API</a>
         </div>
       </div>
@@ -725,7 +728,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:4rem
       <h2>Publish Your First <span>Holon</span></h2>
       <p>Grab the STAR CLI, sign in with your OASIS Avatar, and ship a holon to the entire Omniverse in minutes. Build once — live everywhere.</p>
       <div class="cta-btns">
-        <a href="https://github.com/NextGenSoftwareUK/OASIS/releases/tag/STAR-API-CLIENT-v1.0.0" target="_blank" rel="noopener" class="btn-primary">GET THE STAR CLI</a>
+        <a href="https://github.com/NextGenSoftwareUK/OASIS/releases/tag/STAR-ODK-Runtime-v3.5.0" target="_blank" rel="noopener" class="btn-primary">GET THE STAR CLI</a>
         <a href="https://api.starnet.oasisomniverse.one" target="_blank" rel="noopener" class="btn-outline">WEB5 STAR API</a>
         <a href="https://github.com/NextGenSoftwareUK/OASIS" target="_blank" rel="noopener" class="btn-outline-cyan">VIEW ON GITHUB</a>
       </div>
@@ -736,50 +739,78 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:4rem
 <!-- FOOTER -->
 <footer>
   <div class="foot-inner">
+    <div class="foot-brand">
+      <div class="logo-txt">STARNET</div>
+      <p>The decentralized app store of the OASIS Omniverse. Publish holons once — versioned, Avatar-signed, and live in every connected world.</p>
+    </div>
     <div class="foot-grid">
-      <div class="foot-brand">
-        <div class="logo-txt">STARNET</div>
-        <p>The decentralized app store of the OASIS Omniverse. Publish holons once — versioned, Avatar-signed, and live in every connected world.</p>
-        <div class="social-row">
-          <a href="https://github.com/NextGenSoftwareUK/OASIS" target="_blank" rel="noopener">GitHub</a>
-          <a href="https://discord.gg/oasisomniverse" target="_blank" rel="noopener">Discord</a>
-          <a href="https://twitter.com/OasisOmniverse" target="_blank" rel="noopener">X / Twitter</a>
-        </div>
-      </div>
       <div class="foot-col">
         <h4>ECOSYSTEM</h4>
         <ul>
           <li><a href="https://oasisomniverse.one" target="_blank" rel="noopener">OASIS Omniverse</a></li>
+          <li><a href="https://web4.oasisomniverse.one" target="_blank" rel="noopener">Web4</a></li>
+          <li><a href="https://oportal.oasisomniverse.one" target="_blank" rel="noopener">OPORTAL</a></li>
           <li><a href="https://ogengine.oasisomniverse.one" target="_blank" rel="noopener">OGEngine</a></li>
           <li><a href="https://ourworld.oasisomniverse.one" target="_blank" rel="noopener">Our World</a></li>
           <li><a href="https://odoom.oasisomniverse.one" target="_blank" rel="noopener">ODOOM</a></li>
-          <li><a href="https://oquake.oasisomniverse.one" target="_blank" rel="noopener">OQUAKE</a></li>
+          <li><a href="https://oquake.oasisomniverse.one" target="_blank" rel="noopener">OQuake</a></li>
           <li><a href="https://holonet.oasisomniverse.one" target="_blank" rel="noopener">HoloNET</a></li>
+          <li><a href="https://founders.oasisomniverse.one" target="_blank" rel="noopener">Founders NFT</a></li>
         </ul>
       </div>
       <div class="foot-col">
-        <h4>DEVELOPERS</h4>
+        <h4>BUILD</h4>
         <ul>
-          <li><a href="https://github.com/NextGenSoftwareUK/OASIS/releases/tag/STAR-API-CLIENT-v1.0.0" target="_blank" rel="noopener">STAR CLI</a></li>
-          <li><a href="https://api.starnet.oasisomniverse.one" target="_blank" rel="noopener">WEB5 STAR API</a></li>
-          <li><a href="https://api.web4.oasisomniverse.one" target="_blank" rel="noopener">WEB4 OASIS API</a></li>
-          <li><a href="https://github.com/NextGenSoftwareUK/OASIS" target="_blank" rel="noopener">GitHub Repo</a></li>
-          <li><a href="https://founders.oasisomniverse.one" target="_blank" rel="noopener">Founders NFT</a></li>
+          <li><a href="https://api.web4.oasisomniverse.one/swagger" target="_blank" rel="noopener">Web4 OASIS API</a></li>
+          <li><a href="https://api.starnet.oasisomniverse.one/swagger" target="_blank" rel="noopener">Web5 STARNET API</a></li>
+          <li><a href="https://github.com/NextGenSoftwareUK/OASIS/releases/tag/STAR-ODK-Runtime-v3.5.0" target="_blank" rel="noopener">STAR CLI/ODK</a></li>
+          <li><a href="https://github.com/NextGenSoftwareUK/OASIS/releases/tag/STAR-API-CLIENT-v1.0.0" target="_blank" rel="noopener">STAR API Client</a></li>
+          <li><a href="https://www.nuget.org/profiles/dellams" target="_blank" rel="noopener">NuGet (50 pkgs)</a></li>
+          <li><a href="https://oasis-web4.gitbook.io/oasis-web4-docs/" target="_blank" rel="noopener">GitBook Docs</a></li>
+          <li><a href="https://github.com/NextGenSoftwareUK/OASIS" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="https://github.com/NextGenSoftwareUK/OASIS/tree/master/Docs/Devs/API%20Documentation" target="_blank" rel="noopener">API Reference</a></li>
+          <li><a href="https://github.com/NextGenSoftwareUK/OASIS/blob/master/Docs/Devs/DEVELOPER_DOCUMENTATION_INDEX.md" target="_blank" rel="noopener">Developer Index</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>READ</h4>
+        <ul>
+          <li><a href="https://oasisomniverse.one#flightmap" target="_blank" rel="noopener">Flight Map</a></li>
+          <li><a href="https://github.com/NextGenSoftwareUK/OASIS/blob/master/Docs/THE_OASIS_COMPREHENSIVE_WHITEPAPER.md" target="_blank" rel="noopener">Whitepaper</a></li>
+          <li><a href="https://github.com/NextGenSoftwareUK/OASIS/blob/master/Docs/OUR_WORLD_WHITEPAPER.md" target="_blank" rel="noopener">Our World Whitepaper</a></li>
+          <li><a href="https://github.com/NextGenSoftwareUK/OASIS/blob/master/Docs/INVESTOR_EVALUATION_GUIDE.md" target="_blank" rel="noopener">Investor Guide</a></li>
+          <li><a href="https://github.com/NextGenSoftwareUK/OASIS/blob/master/Docs/Devs/GETTING_STARTED_INDEX.md" target="_blank" rel="noopener">Getting Started</a></li>
+          <li><a href="https://github.com/NextGenSoftwareUK/OASIS/blob/master/Docs/Devs/STAR_CLI_Comprehensive_Guide.md" target="_blank" rel="noopener">STAR CLI Guide</a></li>
+          <li><a href="https://www.oasisweb4.com/holonic-architecture" target="_blank" rel="noopener">Holonic Architecture</a></li>
+          <li><a href="https://github.com/NextGenSoftwareUK/OASIS/blob/master/Docs/Devs/WIKI_DOCUMENTATION_INDEX.md" target="_blank" rel="noopener">Wiki</a></li>
+          <li><a href="https://www.ourworldthegame.com/blog" target="_blank" rel="noopener">Blog</a></li>
         </ul>
       </div>
       <div class="foot-col">
         <h4>COMMUNITY</h4>
         <ul>
-          <li><a href="https://discord.gg/oasisomniverse" target="_blank" rel="noopener">Discord</a></li>
-          <li><a href="https://twitter.com/OasisOmniverse" target="_blank" rel="noopener">X / Twitter</a></li>
-          <li><a href="https://t.me/oasisomniverse" target="_blank" rel="noopener">Telegram</a></li>
+          <li><a href="https://discord.gg/q9gMKU6" target="_blank" rel="noopener">Discord</a></li>
+          <li><a href="https://t.me/oasisweb4chat" target="_blank" rel="noopener">Telegram</a></li>
+          <li><a href="https://x.com/OASISWEB4" target="_blank" rel="noopener">𝕏 OASIS WEB4</a></li>
+          <li><a href="https://x.com/OurWorldTheGame" target="_blank" rel="noopener">𝕏 Our World</a></li>
+          <li><a href="https://x.com/HoloNET_OASIS" target="_blank" rel="noopener">𝕏 HoloNET</a></li>
+          <li><a href="https://www.youtube.com/@WEB4OASIS" target="_blank" rel="noopener">YouTube OASIS</a></li>
+          <li><a href="https://www.youtube.com/@ourworld-the-game" target="_blank" rel="noopener">YouTube Our World</a></li>
           <li><a href="https://www.youtube.com/channel/UC0_O4RwdY3lq1m3-K-njUxA" target="_blank" rel="noopener">YouTube Our World Legacy</a></li>
-          <li><a href="https://founders.oasisomniverse.one" target="_blank" rel="noopener">Founders NFT</a></li>
+          <li><a href="https://www.facebook.com/ourworldthegame" target="_blank" rel="noopener">Facebook</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>SUPPORT</h4>
+        <ul>
+          <li><a href="https://github.com/NextGenSoftwareUK/OASIS/issues" target="_blank" rel="noopener">Report an Issue</a></li>
+          <li><a href="https://github.com/NextGenSoftwareUK/OASIS/discussions" target="_blank" rel="noopener">Discussions</a></li>
+          <li><a href="https://tally.so/r/WOZjNa" target="_blank" rel="noopener">Submit a Support Ticket</a></li>
         </ul>
       </div>
     </div>
     <div class="foot-bottom">
-      <p>&copy; 2025 NextGen Software Ltd. All rights reserved.</p>
+      <p>&copy; 2026 <a href="https://nextgenworld.co.uk">NextGen Software Ltd.</a> All rights reserved.</p>
       <p>Part of the <a href="https://oasisomniverse.one" target="_blank" rel="noopener">OASIS Omniverse</a> ecosystem.</p>
     </div>
   </div>
