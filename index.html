@@ -1078,9 +1078,27 @@ a:hover{filter:drop-shadow(0 0 8px rgba(167,139,250,1)) drop-shadow(0 0 20px rgb
   var cv=document.getElementById('omniverse-canvas');
   if(!cv)return;
   var ctx=cv.getContext('2d');
-  var W=3200, H=1800;
-  cv.width=W; cv.height=H;
-  var cx=W/2, cy=H/2, TILT=0.40;
+  var W,H,cx,cy;
+  var TILT=0.40, t=0, animId;
+
+  // All sizes are fractions of cx so the diagram always fills the container
+  var P={
+    RU:0.60,  RG:0.270, RS:0.128, RP:0.062, RM:0.028,
+    bG:0.068, bU:0.036, bS:0.030, bSt:0.022, bPl:0.014, bMn:0.008,
+    zRG:0.108,zRU:0.058,zRS:0.055,zRSt:0.040,zRPl:0.030,zRMn:0.018,
+    zBG:0.0080,zBU:0.0065,zBS:0.0058,zBSt:0.0050,zBPl:0.0044,zBMn:0.0038,
+    hRG:0.022,hRU:0.018,hRS:0.017,hRSt:0.015,hRPl:0.012,hRMn:0.010,
+    hB:0.004
+  };
+
+  function resize(){
+    if(animId) cancelAnimationFrame(animId);
+    W=cv.parentElement.clientWidth||1200;
+    H=Math.round(W*0.62);
+    cv.width=W; cv.height=H;
+    cx=W/2; cy=H/2;
+    animId=requestAnimationFrame(render);
+  }
 
   function pr(x,y){ return [cx+x, cy+y*TILT]; }
 
@@ -1088,8 +1106,8 @@ a:hover{filter:drop-shadow(0 0 8px rgba(167,139,250,1)) drop-shadow(0 0 20px rgb
     var c=pr(ox,oy);
     ctx.beginPath();
     ctx.ellipse(c[0],c[1],r,r*TILT,0,0,Math.PI*2);
-    ctx.strokeStyle=col; ctx.lineWidth=lw||3;
-    ctx.setLineDash([12,18]); ctx.stroke(); ctx.setLineDash([]);
+    ctx.strokeStyle=col; ctx.lineWidth=lw;
+    var d=Math.max(2,r*0.016); ctx.setLineDash([d,d*1.5]); ctx.stroke(); ctx.setLineDash([]);
   }
 
   function glow(x,y,r,col){
@@ -1107,7 +1125,7 @@ a:hover{filter:drop-shadow(0 0 8px rgba(167,139,250,1)) drop-shadow(0 0 20px rgb
   }
 
   function lbl(x,y,abv,lines,col,sz){
-    var c=pr(x,y); sz=sz||28; var lh=sz*1.38;
+    var c=pr(x,y); var lh=sz*1.35;
     ctx.textAlign='center';
     if(!Array.isArray(lines)) lines=[lines];
     lines.forEach(function(l,i,a){
@@ -1119,110 +1137,112 @@ a:hover{filter:drop-shadow(0 0 8px rgba(167,139,250,1)) drop-shadow(0 0 20px rgb
 
   function at(ox,oy,r,a){ return [ox+r*Math.cos(a), oy+r*Math.sin(a)]; }
 
-  function zh(ox,oy,zR,zBr,zSp,hR,n){
+  function zh(ox,oy,zR,zBr,zSp,hR,hBr,n){
     for(var i=0;i<n;i++){
       var za=t*zSp+i*(Math.PI*2/n);
       var zp=at(ox,oy,zR,za);
       for(var h=0;h<2;h++){
         var ha=t*0.027+h*Math.PI+za*2.3;
         var hp=at(zp[0],zp[1],hR,ha);
-        dot(hp[0],hp[1],3.6,'#A78BFA');
+        dot(hp[0],hp[1],hBr,'#A78BFA');
       }
       dot(zp[0],zp[1],zBr,'#00E5FF');
     }
   }
 
-  var t=0;
-
   function render(){
     ctx.clearRect(0,0,W,H);
 
-    glow(0,0,1040,'rgba(255,210,0,0.03)');
-    glow(0,0,520,'rgba(139,92,246,0.04)');
+    var RU=cx*P.RU, RG=cx*P.RG, RS=cx*P.RS, RP=cx*P.RP, RM=cx*P.RM;
+    var bG=cx*P.bG, bU=cx*P.bU, bS=cx*P.bS, bSt=cx*P.bSt, bPl=cx*P.bPl, bMn=cx*P.bMn;
+    var hb=cx*P.hB;
+    var lw1=cx*0.003, lw2=cx*0.0022, lw3=cx*0.0017, lw4=cx*0.0013, lw5=cx*0.001;
+    var fsH=Math.round(cx*0.015), fsG=Math.round(cx*0.020), fsU=Math.round(cx*0.024), fsLg=Math.round(cx*0.028);
 
-    ctx.fillStyle='rgba(139,92,246,0.28)';
-    ctx.font='700 36px "Share Tech Mono",monospace';
+    glow(0,0,RU*0.86,'rgba(255,210,0,0.03)');
+    glow(0,0,RU*0.43,'rgba(139,92,246,0.04)');
+
+    ctx.fillStyle='rgba(139,92,246,0.26)';
+    ctx.font='700 '+Math.round(cx*0.015)+'px "Share Tech Mono",monospace';
     ctx.textAlign='left';
-    ctx.fillText('OASIS OMNIVERSE — FULL HIERARCHY', 56, 72);
+    ctx.fillText('OASIS OMNIVERSE — FULL HIERARCHY', cx*0.04, cy*0.09);
 
-    // ── Universe orbit ring ──
-    ring(0,0, 780, 'rgba(255,215,0,0.18)', 3.6);
+    ring(0,0, RU, 'rgba(255,215,0,0.18)', lw1);
 
-    // ── 2 GRAND SUPER STARS ──
     for(var gi=0;gi<2;gi++){
       var ga=gi*Math.PI + t*0.00042;
-      var gp=at(0,0, 780, ga);
+      var gp=at(0,0, RU, ga);
       var gx=gp[0], gy=gp[1];
 
-      ring(gx,gy, 280, 'rgba(255,140,0,0.18)', 2.8);
-      zh(gx,gy, 92, 5.6, 0.0040, 13, 2);
+      ring(gx,gy, RG, 'rgba(255,140,0,0.18)', lw2);
+      zh(gx,gy, cx*P.zRU,cx*P.zBU, 0.0040, cx*P.hRU,hb, 2);
 
-      // ── 2 SUPER STARS per GSS ──
       for(var si=0;si<2;si++){
         var sa=si*Math.PI + gi*0.62 + t*0.00122;
-        var sp=at(gx,gy, 280, sa);
+        var sp=at(gx,gy, RG, sa);
         var sx=sp[0], sy=sp[1];
 
-        ring(sx,sy, 132, 'rgba(255,165,0,0.17)', 2.4);
-        zh(sx,sy, 60, 4.8, 0.0070, 10, 2);
+        ring(sx,sy, RS, 'rgba(255,165,0,0.17)', lw3);
+        zh(sx,sy, cx*P.zRS,cx*P.zBS, 0.0070, cx*P.hRS,hb, 2);
 
-        // ── 1 STAR per SS ──
         var sta=si*1.8+gi*2.4+t*0.00300;
-        var stp=at(sx,sy, 132, sta);
+        var stp=at(sx,sy, RS, sta);
         var stx=stp[0], sty=stp[1];
 
-        ring(stx,sty, 72, 'rgba(255,229,102,0.17)', 2.0);
-        zh(stx,sty, 44, 4.0, 0.0122, 8.4, 2);
+        ring(stx,sty, RP, 'rgba(255,229,102,0.17)', lw4);
+        zh(stx,sty, cx*P.zRSt,cx*P.zBSt, 0.0122, cx*P.hRSt,hb, 2);
 
-        // ── 2 PLANETS per Star ──
         for(var pi=0;pi<2;pi++){
           var pla=pi*Math.PI+si*0.88+t*0.00700;
-          var plp=at(stx,sty, 72, pla);
+          var plp=at(stx,sty, RP, pla);
           var plx=plp[0], ply=plp[1];
 
-          ring(plx,ply, 32, 'rgba(79,195,247,0.24)', 1.8);
-          zh(plx,ply, 34, 3.6, 0.0200, 7.0, 2);
+          ring(plx,ply, RM, 'rgba(79,195,247,0.24)', lw5);
+          zh(plx,ply, cx*P.zRPl,cx*P.zBPl, 0.0200, cx*P.hRPl,hb, 2);
 
-          // ── 1 MOON per Planet ──
           var mna=pi*2.2+si*1.4+t*0.01800;
-          var mnp=at(plx,ply, 32, mna);
+          var mnp=at(plx,ply, RM, mna);
           var mnx=mnp[0], mny=mnp[1];
 
-          zh(mnx,mny, 18, 3.2, 0.0330, 5.6, 1);
+          zh(mnx,mny, cx*P.zRMn,cx*P.zBMn, 0.0330, cx*P.hRMn,hb, 1);
 
-          glow(mnx,mny, 32,'rgba(176,200,212,0.32)');
-          dot(mnx,mny, 10,'#B0C8D4');
+          glow(mnx,mny, bMn*2.8,'rgba(176,200,212,0.32)');
+          dot(mnx,mny, bMn,'#B0C8D4');
 
-          glow(plx,ply, 52,'rgba(79,195,247,0.32)');
-          dot(plx,ply, 18,'#4FC3F7');
+          glow(plx,ply, bPl*3.2,'rgba(79,195,247,0.32)');
+          dot(plx,ply, bPl,'#4FC3F7');
         }
 
-        glow(stx,sty, 76,'rgba(255,229,102,0.36)');
-        dot(stx,sty, 26,'#FFE566');
+        glow(stx,sty, bSt*3.5,'rgba(255,229,102,0.36)');
+        dot(stx,sty, bSt,'#FFE566');
 
-        glow(sx,sy, 108,'rgba(255,176,64,0.34)');
-        dot(sx,sy, 40,'#FFB040');
-        lbl(sx,sy, 48,'GALAXY','#FFB040',22);
+        glow(sx,sy, bS*3.2,'rgba(255,176,64,0.34)');
+        dot(sx,sy, bS,'#FFB040');
+        lbl(sx,sy, bS+cx*0.012,'GALAXY','#FFB040',fsG);
       }
 
-      glow(gx,gy, 152,'rgba(255,140,0,0.40)');
-      dot(gx,gy, 56,'#FF8C00');
-      lbl(gx,gy, 64,'UNIVERSE','#FF8C00',26);
+      glow(gx,gy, bU*3.2,'rgba(255,140,0,0.40)');
+      dot(gx,gy, bU,'#FF8C00');
+      lbl(gx,gy, bU+cx*0.016,'UNIVERSE','#FF8C00',fsU);
     }
 
-    zh(0,0, 148, 6.4, 0.0028, 15, 3);
+    zh(0,0, cx*P.zRG,cx*P.zBG, 0.0028, cx*P.hRG,hb, 3);
 
-    var gr=100+8*Math.sin(t*0.045);
-    glow(0,0,300,'rgba(255,215,0,0.55)');
-    glow(0,0,140,'rgba(255,235,100,0.45)');
+    var gr=bG*(1+0.08*Math.sin(t*0.045));
+    glow(0,0,gr*2.8,'rgba(255,215,0,0.55)');
+    glow(0,0,gr*1.5,'rgba(255,235,100,0.45)');
     dot(0,0,gr,'#FFD700');
-    lbl(0,0,gr+28,['GREAT GRAND SUPER STAR','OMNIVERSE CORE'],'#FFD700',30);
+    lbl(0,0,gr+cx*0.022,['GREAT GRAND SUPER STAR','OMNIVERSE CORE'],'#FFD700',fsLg);
 
     t++;
-    requestAnimationFrame(render);
+    animId=requestAnimationFrame(render);
   }
 
-  render();
+  window.addEventListener('resize',function(){
+    clearTimeout(window._omniRT);
+    window._omniRT=setTimeout(resize,150);
+  });
+  resize();
 })();
 </script>
 </body>
