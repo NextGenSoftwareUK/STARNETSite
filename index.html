@@ -94,6 +94,17 @@ section{position:relative;z-index:1}
 .holon-card p{color:#a8bfd8;font-size:.92rem;line-height:1.6}
 .holon-card .cmd{display:inline-block;margin-top:.7rem;font-family:'Share Tech Mono',monospace;font-size:.74rem;color:var(--cyan);background:rgba(0,229,255,.07);border:1px solid rgba(0,229,255,.18);padding:.2rem .55rem;border-radius:4px}
 
+/* ── CELESTIAL COMPOSE ── */
+.cg-compose{display:flex;align-items:stretch;gap:0;flex-wrap:wrap;justify-content:center;margin:0 auto 3rem;max-width:1080px}
+.cg-step{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.4rem 1.2rem;text-align:center;flex:1;min-width:200px}
+.cg-step h4{font-family:'Orbitron',sans-serif;font-size:.82rem;font-weight:700;color:var(--violet-light);letter-spacing:.06em;margin:.6rem 0 .5rem}
+.cg-step p{font-size:.85rem;color:#a8bfd8;line-height:1.55}
+.cg-step-icon{font-size:1.8rem}
+.cg-mini-row{display:flex;justify-content:center;gap:.3rem;margin:.6rem 0;flex-wrap:wrap}
+.cg-mini{font-size:.95rem;opacity:.85}
+.cg-arrow{display:flex;align-items:center;justify-content:center;color:var(--violet-light);font-size:1.4rem;padding:0 .6rem;flex:0 0 auto}
+@media (max-width:880px){.cg-arrow{transform:rotate(90deg);padding:.4rem 0}}
+
 /* ── CLI / DEVELOPER ── */
 #cli{padding:6rem 0;background:linear-gradient(180deg,transparent,rgba(0,0,0,.3),transparent)}
 .dev-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
@@ -184,6 +195,14 @@ footer a:hover{color:var(--violet-light);filter:drop-shadow(0 0 8px rgba(167,139
 .foot-bottom p{color:#a8bfd8;font-size:.82rem}
 .foot-bottom a{color:#a8bfd8;text-decoration:none}
 
+
+/* ── OMNIVERSE DIAGRAM ── */
+#omniverse-diagram{padding:6rem 0}
+.omni-wrap{border-radius:12px;overflow:hidden;border:1px solid rgba(139,92,246,.22);background:#030714;box-shadow:0 0 60px rgba(139,92,246,.1)}
+#omniverse-canvas{display:block;width:100%}
+.omni-legend{display:flex;flex-wrap:wrap;gap:.6rem 1.6rem;justify-content:center;margin-top:1.4rem;padding:0 .5rem}
+.omni-li{display:flex;align-items:center;gap:.45rem;font-family:'Share Tech Mono',monospace;font-size:.72rem;color:#a8bfd8;letter-spacing:.06em;white-space:nowrap}
+.omni-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
 
 /* ── SCROLL REVEAL ── */
 .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
@@ -501,6 +520,42 @@ a:hover{filter:drop-shadow(0 0 8px rgba(167,139,250,1)) drop-shadow(0 0 20px rgb
       <h2>From Moon to Omniverse Center</h2>
       <p>Celestial Bodies aren't just a holon type — they're how your Avatar's standing in the Omniverse grows. To begin with, Avatars can only create Moons. As you level up and earn more karma, you unlock the ability to create your own Planets, and eventually Stars, Galaxies and entire Universes.</p>
     </div>
+    <h3 style="font-family:'Orbitron',sans-serif;font-size:1rem;color:var(--text);text-align:center;letter-spacing:.08em;margin:0 0 1.4rem" class="reveal">HOW STARNET BUILDS A WORLD</h3>
+    <div class="cg-compose reveal">
+      <div class="cg-step">
+        <div class="cg-step-icon">🧬</div>
+        <h4>HOLON</h4>
+        <p>The atomic unit — a single app, game, site, avatar, or asset. Everything in the Omniverse is a holon.</p>
+        <div class="cg-mini-row"><span class="cg-mini">📦</span><span class="cg-mini">🎯</span><span class="cg-mini">💎</span><span class="cg-mini">🤖</span></div>
+      </div>
+      <div class="cg-arrow">→</div>
+      <div class="cg-step">
+        <div class="cg-step-icon">🧩</div>
+        <h4>ZOME</h4>
+        <p>Holons are grouped into Zomes — logical clusters that define a feature area or community layer within a Celestial Body.</p>
+        <div class="cg-mini-row"><span class="cg-mini">🧬🧬🧬</span></div>
+      </div>
+      <div class="cg-arrow">→</div>
+      <div class="cg-step">
+        <div class="cg-step-icon">🪐</div>
+        <h4>CELESTIAL BODY</h4>
+        <p>Zomes compose a Celestial Body — Moon, Planet, Star, Super Star or Grand Super Star — each hosting its own orbit of smaller bodies.</p>
+        <div class="cg-mini-row"><span class="cg-mini">🌑</span><span class="cg-mini">🪐</span><span class="cg-mini">⭐</span><span class="cg-mini">🌟</span><span class="cg-mini">🌌</span></div>
+      </div>
+      <div class="cg-arrow">→</div>
+      <div class="cg-step">
+        <div class="cg-step-icon">🌌</div>
+        <h4>CELESTIAL SPACE</h4>
+        <p>Celestial Bodies orbit inside Celestial Spaces — the gravitational zones that define scale, from solar systems to the full Omniverse.</p>
+        <div class="cg-mini-row"><span class="cg-mini">🌌🌌🌌</span></div>
+      </div>
+    </div>
+
+    <h3 style="font-family:'Orbitron',sans-serif;font-size:1.1rem;color:var(--text);text-align:center;letter-spacing:.06em;margin:0 0 1rem" class="reveal">Every Tier, Orbiting Toward the Core</h3>
+    <div class="reveal" style="max-width:1240px;margin:0 auto 40px;border-radius:16px;overflow:hidden;border:1px solid rgba(139,92,246,.25);background:rgba(5,3,20,.6);box-shadow:0 0 50px rgba(139,92,246,.12)">
+      <canvas id="celestial-canvas" style="width:100%;display:block"></canvas>
+    </div>
+
     <div class="flow-strip reveal">
       <div class="flow-step">
         <div class="fs-num">TIER 01</div>
@@ -535,6 +590,30 @@ a:hover{filter:drop-shadow(0 0 8px rgba(167,139,250,1)) drop-shadow(0 0 20px rgb
     </div>
     <p style="text-align:center;max-width:760px;margin:24px auto 0;line-height:1.7;color:#a8bfd8">There is only <strong>one</strong> Great Grand Super Star — the singular core engine at the very center of the entire OASIS Omniverse. It isn't a tier Avatars level up into; it's the Omniverse itself.</p>
     <p style="text-align:center;max-width:760px;margin:24px auto 0;line-height:1.7;color:#a8bfd8">Growth isn't just cosmetic. You earn karma for hosting other holons within your Celestial Body — and the bigger the Star, the bigger the reward. Hosting rewards pay out in karma, <strong>SEEDS</strong> and <strong>HoloFuel</strong>, so the more of the Omniverse you support, the more you earn.</p>
+  </div>
+</section>
+
+<!-- OMNIVERSE HIERARCHY DIAGRAM -->
+<section id="omniverse-diagram">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <div class="section-kicker">LIVE 3D HIERARCHY</div>
+      <h2>The Full <span style="color:var(--violet-light)">OASIS Omniverse</span></h2>
+      <p>A live 3D visualization of the complete OASIS Omniverse — Holons orbiting Zomes, Zomes orbiting Celestial Bodies, Moons orbiting Planets, Planets orbiting Stars (Solar Systems), Solar Systems orbiting Super Stars (Galaxies), Galaxies orbiting Grand Super Stars (Universes), and Universes orbiting the one Great Grand Super Star at the Omniverse core.</p>
+    </div>
+    <div class="omni-wrap reveal">
+      <canvas id="omniverse-canvas"></canvas>
+    </div>
+    <div class="omni-legend">
+      <div class="omni-li"><div class="omni-dot" style="background:#FFD700"></div>GREAT GRAND SUPER STAR (OMNIVERSE)</div>
+      <div class="omni-li"><div class="omni-dot" style="background:#FF8C00"></div>GRAND SUPER STAR (UNIVERSE)</div>
+      <div class="omni-li"><div class="omni-dot" style="background:#FFB040"></div>SUPER STAR (GALAXY)</div>
+      <div class="omni-li"><div class="omni-dot" style="background:#FFE566"></div>STAR (SOLAR SYSTEM)</div>
+      <div class="omni-li"><div class="omni-dot" style="background:#4FC3F7"></div>PLANET</div>
+      <div class="omni-li"><div class="omni-dot" style="background:#B0C8D4"></div>MOON</div>
+      <div class="omni-li"><div class="omni-dot" style="background:#00E5FF"></div>ZOME</div>
+      <div class="omni-li"><div class="omni-dot" style="background:#A78BFA"></div>HOLON</div>
+    </div>
   </div>
 </section>
 
@@ -763,6 +842,12 @@ a:hover{filter:drop-shadow(0 0 8px rgba(167,139,250,1)) drop-shadow(0 0 20px rgb
         <h3>Pick n Mix OAPP Builder</h3>
         <p>A drag-and-drop, low-code interface for plugging together holons — web, Unity, Unreal and metaverse components — into a working OAPP without writing code.</p>
       </div>
+      <div class="rm-tile soon reveal">
+        <span class="rm-badge soon">SOON</span>
+        <div class="rm-kicker cyan">NEXT</div>
+        <h3>Pick N Mix OAPP Builder</h3>
+        <p>Drag-and-drop holons together to compose your own OAPPs without writing a single line of code. Mix any combination of holons into a fully functional app in minutes.</p>
+      </div>
       <div class="rm-tile future reveal">
         <div class="rm-kicker dim">ON THE HORIZON</div>
         <h3>Creator Marketplace</h3>
@@ -877,10 +962,267 @@ a:hover{filter:drop-shadow(0 0 8px rgba(167,139,250,1)) drop-shadow(0 0 20px rgb
   window.addEventListener('resize',resize);resize();draw();
 })();
 
+// ── CELESTIAL GROWTH DIAGRAM ──
+(function(){
+  const cv=document.getElementById('celestial-canvas');
+  if(!cv) return;
+  const ctx=cv.getContext('2d');
+  const W=1800,H=1440; cv.width=W; cv.height=H;
+  const cx=W/2, cy=H/2;
+  const CORE_R=84;
+  const TIERS=[
+    {name:'MOON',             r:600, col:'#8aa0c0', icon:'🌑', speed:0.15},
+    {name:'PLANET',           r:496, col:'#00cc88', icon:'🪐', speed:0.22},
+    {name:'STAR',             r:392, col:'#f0a500', icon:'⭐', speed:0.30},
+    {name:'SUPER STAR',       r:288, col:'#a78bfa', icon:'🌟', speed:0.40},
+    {name:'GRAND SUPER STAR', r:184, col:'#ff5fa8', icon:'🌌', speed:0.52}
+  ];
+  const t0=performance.now();
+  function c2r(hex,a){
+    const n=parseInt(hex.slice(1),16);
+    return `rgba(${(n>>16)&255},${(n>>8)&255},${n&255},${a})`;
+  }
+  function draw(now){
+    const el=(now-t0)/1000;
+    ctx.clearRect(0,0,W,H);
+    const bgg=ctx.createRadialGradient(cx,cy,0,cx,cy,720);
+    bgg.addColorStop(0,'rgba(139,92,246,.08)');
+    bgg.addColorStop(1,'rgba(139,92,246,0)');
+    ctx.fillStyle=bgg; ctx.fillRect(0,0,W,H);
+    TIERS.forEach((tier,i)=>{
+      const breathe=0.32+0.16*Math.sin(el*0.6+i);
+      ctx.beginPath();
+      ctx.setLineDash([6,6]);
+      ctx.arc(cx,cy,tier.r,0,Math.PI*2);
+      ctx.strokeStyle=c2r(tier.col,breathe);
+      ctx.lineWidth=2.8;
+      ctx.stroke();
+      ctx.setLineDash([]);
+      const ly=cy-tier.r;
+      ctx.font='700 26px "Share Tech Mono",monospace';
+      ctx.textAlign='center'; ctx.textBaseline='bottom';
+      ctx.fillStyle=c2r(tier.col,.9);
+      ctx.fillText(tier.icon+' '+tier.name, cx, ly-16);
+      const ang=-Math.PI/2+el*tier.speed;
+      const ox=cx+Math.cos(ang)*tier.r, oy=cy+Math.sin(ang)*tier.r;
+      const og=ctx.createRadialGradient(ox,oy,0,ox,oy,32);
+      og.addColorStop(0,c2r(tier.col,.9));
+      og.addColorStop(1,c2r(tier.col,0));
+      ctx.beginPath(); ctx.arc(ox,oy,32,0,Math.PI*2); ctx.fillStyle=og; ctx.fill();
+      ctx.font='32px sans-serif';
+      ctx.textAlign='center'; ctx.textBaseline='middle';
+      ctx.fillText(tier.icon, ox, oy);
+    });
+    for(let k=0;k<3;k++){
+      const ph=((el*0.4+k/3)%1);
+      const rr=CORE_R+ph*140;
+      ctx.beginPath();
+      ctx.arc(cx,cy,rr,0,Math.PI*2);
+      ctx.strokeStyle=`rgba(255,255,255,${(1-ph)*0.25})`;
+      ctx.lineWidth=2.4;
+      ctx.stroke();
+    }
+    const cg=ctx.createRadialGradient(cx,cy,0,cx,cy,CORE_R*2.2);
+    cg.addColorStop(0,'rgba(255,255,255,.9)');
+    cg.addColorStop(.4,'rgba(180,140,255,.5)');
+    cg.addColorStop(1,'rgba(139,92,246,0)');
+    ctx.beginPath(); ctx.arc(cx,cy,CORE_R*2.2,0,Math.PI*2); ctx.fillStyle=cg; ctx.fill();
+    ctx.beginPath(); ctx.arc(cx,cy,CORE_R,0,Math.PI*2);
+    ctx.fillStyle='rgba(8,4,20,.95)'; ctx.fill();
+    ctx.lineWidth=4; ctx.strokeStyle='#fff'; ctx.stroke();
+    ctx.font='900 24px Orbitron,sans-serif';
+    ctx.fillStyle='#fff'; ctx.textAlign='center'; ctx.textBaseline='middle';
+    ctx.fillText('CORE',cx,cy-12);
+    ctx.font='18px "Share Tech Mono",monospace';
+    ctx.fillStyle='rgba(255,255,255,.65)';
+    ctx.fillText('UNREACHABLE',cx,cy+18);
+    const cycle=6.5, travel=4.2, pause=1.0;
+    const phase=el%cycle;
+    const rOuter=TIERS[0].r, rInner=TIERS[4].r;
+    let pr, alpha=1, glowBoost=0;
+    if(phase<travel){
+      const tt=phase/travel;
+      const ease=tt<0.5?2*tt*tt:1-Math.pow(-2*tt+2,2)/2;
+      pr=rOuter-(rOuter-rInner)*ease;
+      glowBoost=ease;
+    } else if(phase<travel+pause){
+      pr=rInner;
+      glowBoost=1+0.3*Math.sin((phase-travel)*10);
+    } else {
+      const ft=(phase-travel-pause)/(cycle-travel-pause);
+      pr=rInner;
+      alpha=1-ft;
+    }
+    const ang=-Math.PI/2;
+    const px=cx+Math.cos(ang)*pr, py=cy+Math.sin(ang)*pr;
+    const pg=ctx.createRadialGradient(px,py,0,px,py,44);
+    pg.addColorStop(0,`rgba(255,255,255,${0.9*alpha})`);
+    pg.addColorStop(.5,`rgba(255,210,255,${0.5*alpha})`);
+    pg.addColorStop(1,'rgba(255,255,255,0)');
+    ctx.beginPath(); ctx.arc(px,py,44,0,Math.PI*2); ctx.fillStyle=pg; ctx.fill();
+    ctx.beginPath(); ctx.arc(px,py,12+glowBoost*4,0,Math.PI*2);
+    ctx.fillStyle=`rgba(255,255,255,${alpha})`; ctx.fill();
+    requestAnimationFrame(draw);
+  }
+  requestAnimationFrame(draw);
+})();
+
 // ── SCROLL REVEAL ──
 (function(){
   const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}}),{threshold:.12});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+})();
+
+// ── OMNIVERSE HIERARCHY CANVAS ──
+(function(){
+  var cv=document.getElementById('omniverse-canvas');
+  if(!cv)return;
+  var ctx=cv.getContext('2d');
+  var W=3200, H=1800;
+  cv.width=W; cv.height=H;
+  var cx=W/2, cy=H/2, TILT=0.40;
+
+  function pr(x,y){ return [cx+x, cy+y*TILT]; }
+
+  function ring(ox,oy,r,col,lw){
+    var c=pr(ox,oy);
+    ctx.beginPath();
+    ctx.ellipse(c[0],c[1],r,r*TILT,0,0,Math.PI*2);
+    ctx.strokeStyle=col; ctx.lineWidth=lw||3;
+    ctx.setLineDash([12,18]); ctx.stroke(); ctx.setLineDash([]);
+  }
+
+  function glow(x,y,r,col){
+    var c=pr(x,y);
+    var g=ctx.createRadialGradient(c[0],c[1],0,c[0],c[1],r);
+    g.addColorStop(0,col); g.addColorStop(1,'rgba(0,0,0,0)');
+    ctx.beginPath(); ctx.arc(c[0],c[1],r,0,Math.PI*2);
+    ctx.fillStyle=g; ctx.fill();
+  }
+
+  function dot(x,y,r,col){
+    var c=pr(x,y);
+    ctx.beginPath(); ctx.arc(c[0],c[1],r,0,Math.PI*2);
+    ctx.fillStyle=col; ctx.fill();
+  }
+
+  function lbl(x,y,abv,lines,col,sz){
+    var c=pr(x,y); sz=sz||28; var lh=sz*1.38;
+    ctx.textAlign='center';
+    if(!Array.isArray(lines)) lines=[lines];
+    lines.forEach(function(l,i,a){
+      ctx.fillStyle=col+'cc';
+      ctx.font='700 '+sz+'px Orbitron,sans-serif';
+      ctx.fillText(l, c[0], c[1]-abv-(a.length-1-i)*lh);
+    });
+  }
+
+  function at(ox,oy,r,a){ return [ox+r*Math.cos(a), oy+r*Math.sin(a)]; }
+
+  function zh(ox,oy,zR,zBr,zSp,hR,n){
+    for(var i=0;i<n;i++){
+      var za=t*zSp+i*(Math.PI*2/n);
+      var zp=at(ox,oy,zR,za);
+      for(var h=0;h<2;h++){
+        var ha=t*0.027+h*Math.PI+za*2.3;
+        var hp=at(zp[0],zp[1],hR,ha);
+        dot(hp[0],hp[1],3.6,'#A78BFA');
+      }
+      dot(zp[0],zp[1],zBr,'#00E5FF');
+    }
+  }
+
+  var t=0;
+
+  function render(){
+    ctx.clearRect(0,0,W,H);
+
+    glow(0,0,1040,'rgba(255,210,0,0.03)');
+    glow(0,0,520,'rgba(139,92,246,0.04)');
+
+    ctx.fillStyle='rgba(139,92,246,0.28)';
+    ctx.font='700 36px "Share Tech Mono",monospace';
+    ctx.textAlign='left';
+    ctx.fillText('OASIS OMNIVERSE — FULL HIERARCHY', 56, 72);
+
+    // ── Universe orbit ring ──
+    ring(0,0, 780, 'rgba(255,215,0,0.18)', 3.6);
+
+    // ── 2 GRAND SUPER STARS ──
+    for(var gi=0;gi<2;gi++){
+      var ga=gi*Math.PI + t*0.00042;
+      var gp=at(0,0, 780, ga);
+      var gx=gp[0], gy=gp[1];
+
+      ring(gx,gy, 280, 'rgba(255,140,0,0.18)', 2.8);
+      zh(gx,gy, 92, 5.6, 0.0040, 13, 2);
+
+      // ── 2 SUPER STARS per GSS ──
+      for(var si=0;si<2;si++){
+        var sa=si*Math.PI + gi*0.62 + t*0.00122;
+        var sp=at(gx,gy, 280, sa);
+        var sx=sp[0], sy=sp[1];
+
+        ring(sx,sy, 132, 'rgba(255,165,0,0.17)', 2.4);
+        zh(sx,sy, 60, 4.8, 0.0070, 10, 2);
+
+        // ── 1 STAR per SS ──
+        var sta=si*1.8+gi*2.4+t*0.00300;
+        var stp=at(sx,sy, 132, sta);
+        var stx=stp[0], sty=stp[1];
+
+        ring(stx,sty, 72, 'rgba(255,229,102,0.17)', 2.0);
+        zh(stx,sty, 44, 4.0, 0.0122, 8.4, 2);
+
+        // ── 2 PLANETS per Star ──
+        for(var pi=0;pi<2;pi++){
+          var pla=pi*Math.PI+si*0.88+t*0.00700;
+          var plp=at(stx,sty, 72, pla);
+          var plx=plp[0], ply=plp[1];
+
+          ring(plx,ply, 32, 'rgba(79,195,247,0.24)', 1.8);
+          zh(plx,ply, 34, 3.6, 0.0200, 7.0, 2);
+
+          // ── 1 MOON per Planet ──
+          var mna=pi*2.2+si*1.4+t*0.01800;
+          var mnp=at(plx,ply, 32, mna);
+          var mnx=mnp[0], mny=mnp[1];
+
+          zh(mnx,mny, 18, 3.2, 0.0330, 5.6, 1);
+
+          glow(mnx,mny, 32,'rgba(176,200,212,0.32)');
+          dot(mnx,mny, 10,'#B0C8D4');
+
+          glow(plx,ply, 52,'rgba(79,195,247,0.32)');
+          dot(plx,ply, 18,'#4FC3F7');
+        }
+
+        glow(stx,sty, 76,'rgba(255,229,102,0.36)');
+        dot(stx,sty, 26,'#FFE566');
+
+        glow(sx,sy, 108,'rgba(255,176,64,0.34)');
+        dot(sx,sy, 40,'#FFB040');
+        lbl(sx,sy, 48,'GALAXY','#FFB040',22);
+      }
+
+      glow(gx,gy, 152,'rgba(255,140,0,0.40)');
+      dot(gx,gy, 56,'#FF8C00');
+      lbl(gx,gy, 64,'UNIVERSE','#FF8C00',26);
+    }
+
+    zh(0,0, 148, 6.4, 0.0028, 15, 3);
+
+    var gr=100+8*Math.sin(t*0.045);
+    glow(0,0,300,'rgba(255,215,0,0.55)');
+    glow(0,0,140,'rgba(255,235,100,0.45)');
+    dot(0,0,gr,'#FFD700');
+    lbl(0,0,gr+28,['GREAT GRAND SUPER STAR','OMNIVERSE CORE'],'#FFD700',30);
+
+    t++;
+    requestAnimationFrame(render);
+  }
+
+  render();
 })();
 </script>
 </body>
