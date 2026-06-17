@@ -1083,11 +1083,11 @@ a:hover{filter:drop-shadow(0 0 8px rgba(167,139,250,1)) drop-shadow(0 0 20px rgb
 
   // All sizes are fractions of cx so the diagram always fills the container
   var P={
-    RU:0.60,  RG:0.270, RS:0.128, RP:0.062, RM:0.028,
-    bG:0.068, bU:0.036, bS:0.030, bSt:0.022, bPl:0.014, bMn:0.008,
-    zRG:0.108,zRU:0.058,zRS:0.055,zRSt:0.040,zRPl:0.030,zRMn:0.018,
-    zBG:0.0080,zBU:0.0065,zBS:0.0058,zBSt:0.0050,zBPl:0.0044,zBMn:0.0038,
-    hRG:0.022,hRU:0.018,hRS:0.017,hRSt:0.015,hRPl:0.012,hRMn:0.010,
+    RU:0.54,  RG:0.235, RS:0.170, RP:0.098, RM:0.046,
+    bG:0.068, bU:0.036, bS:0.034, bSt:0.026, bPl:0.018, bMn:0.011,
+    zRG:0.108,zRU:0.058,zRS:0.055,zRSt:0.046,zRPl:0.036,zRMn:0.024,
+    zBG:0.0080,zBU:0.0065,zBS:0.0058,zBSt:0.0054,zBPl:0.0048,zBMn:0.0042,
+    hRG:0.022,hRU:0.018,hRS:0.017,hRSt:0.016,hRPl:0.013,hRMn:0.011,
     hB:0.004
   };
 
@@ -1156,7 +1156,7 @@ a:hover{filter:drop-shadow(0 0 8px rgba(167,139,250,1)) drop-shadow(0 0 20px rgb
     var RU=cx*P.RU, RG=cx*P.RG, RS=cx*P.RS, RP=cx*P.RP, RM=cx*P.RM;
     var bG=cx*P.bG, bU=cx*P.bU, bS=cx*P.bS, bSt=cx*P.bSt, bPl=cx*P.bPl, bMn=cx*P.bMn;
     var hb=cx*P.hB;
-    var lw1=cx*0.003, lw2=cx*0.0022, lw3=cx*0.0017, lw4=cx*0.0013, lw5=cx*0.001;
+    var lw1=cx*0.003, lw2=cx*0.0022, lw3=cx*0.0025, lw4=cx*0.0022, lw5=cx*0.0018;
     var fsH=Math.round(cx*0.015), fsG=Math.round(cx*0.020), fsU=Math.round(cx*0.024), fsLg=Math.round(cx*0.028);
 
     glow(0,0,RU*0.86,'rgba(255,210,0,0.03)');
@@ -1182,14 +1182,14 @@ a:hover{filter:drop-shadow(0 0 8px rgba(167,139,250,1)) drop-shadow(0 0 20px rgb
         var sp=at(gx,gy, RG, sa);
         var sx=sp[0], sy=sp[1];
 
-        ring(sx,sy, RS, 'rgba(255,165,0,0.17)', lw3);
+        ring(sx,sy, RS, 'rgba(255,165,0,0.32)', lw3);
         zh(sx,sy, cx*P.zRS,cx*P.zBS, 0.0070, cx*P.hRS,hb, 2);
 
         var sta=si*1.8+gi*2.4+t*0.00300;
         var stp=at(sx,sy, RS, sta);
         var stx=stp[0], sty=stp[1];
 
-        ring(stx,sty, RP, 'rgba(255,229,102,0.17)', lw4);
+        ring(stx,sty, RP, 'rgba(255,229,102,0.32)', lw4);
         zh(stx,sty, cx*P.zRSt,cx*P.zBSt, 0.0122, cx*P.hRSt,hb, 2);
 
         for(var pi=0;pi<2;pi++){
@@ -1197,7 +1197,7 @@ a:hover{filter:drop-shadow(0 0 8px rgba(167,139,250,1)) drop-shadow(0 0 20px rgb
           var plp=at(stx,sty, RP, pla);
           var plx=plp[0], ply=plp[1];
 
-          ring(plx,ply, RM, 'rgba(79,195,247,0.24)', lw5);
+          ring(plx,ply, RM, 'rgba(79,195,247,0.42)', lw5);
           zh(plx,ply, cx*P.zRPl,cx*P.zBPl, 0.0200, cx*P.hRPl,hb, 2);
 
           var mna=pi*2.2+si*1.4+t*0.01800;
@@ -1206,15 +1206,16 @@ a:hover{filter:drop-shadow(0 0 8px rgba(167,139,250,1)) drop-shadow(0 0 20px rgb
 
           zh(mnx,mny, cx*P.zRMn,cx*P.zBMn, 0.0330, cx*P.hRMn,hb, 1);
 
-          glow(mnx,mny, bMn*2.8,'rgba(176,200,212,0.32)');
+          glow(mnx,mny, bMn*3.8,'rgba(176,200,212,0.42)');
           dot(mnx,mny, bMn,'#B0C8D4');
 
-          glow(plx,ply, bPl*3.2,'rgba(79,195,247,0.32)');
+          glow(plx,ply, bPl*4.0,'rgba(79,195,247,0.42)');
           dot(plx,ply, bPl,'#4FC3F7');
         }
 
-        glow(stx,sty, bSt*3.5,'rgba(255,229,102,0.36)');
+        glow(stx,sty, bSt*5.0,'rgba(255,229,102,0.48)');
         dot(stx,sty, bSt,'#FFE566');
+        lbl(stx,sty, bSt+cx*0.008,'STAR','#FFE566',Math.round(cx*0.016));
 
         glow(sx,sy, bS*3.2,'rgba(255,176,64,0.34)');
         dot(sx,sy, bS,'#FFB040');
