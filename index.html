@@ -127,6 +127,23 @@ section{position:relative;z-index:1}
 .tech-pill{background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.28);color:var(--violet-light);padding:.35rem .9rem;border-radius:20px;font-size:.8rem;font-family:'Share Tech Mono',monospace;letter-spacing:.05em}
 .dev-links{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.8rem}
 
+/* ── STAR ODK ── */
+#star-odk{padding:6rem 0}
+.odk-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2rem;margin:3rem 0}
+.odk-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:2rem 1.5rem;text-align:center;transition:border-color .3s,box-shadow .3s,transform .3s}
+.odk-card:hover{border-color:var(--violet-light);box-shadow:0 0 30px rgba(139,92,246,.15);transform:translateY(-4px)}
+.odk-icon{font-size:2.4rem;margin-bottom:1rem;display:block}
+.odk-card h3{font-family:'Orbitron',sans-serif;font-size:1.05rem;font-weight:700;color:var(--violet-light);margin-bottom:.8rem;letter-spacing:.06em}
+.odk-card p{color:#a8bfd8;font-size:.95rem;line-height:1.7;margin-bottom:1rem}
+.provider-list{list-style:none;display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-top:1rem}
+.provider-list li{background:rgba(139,92,246,.08);border:1px solid rgba(139,92,246,.15);color:var(--text-dim);padding:.3rem .7rem;border-radius:4px;font-size:.8rem}
+.code-stack{background:rgba(139,92,246,.05);border:1px solid var(--border);border-radius:8px;padding:1.2rem;margin-top:1rem;font-family:'Share Tech Mono',monospace;font-size:.85rem}
+.code-stack .layer{padding:.4rem;color:var(--text-dim)}
+.features-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;margin-top:2rem}
+.feature-box{background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.15);border-radius:10px;padding:1.5rem;text-align:left}
+.feature-icon{display:inline-block;color:var(--violet-light);font-size:1.3rem;margin-right:.6rem;font-weight:700}
+.feature-box p{color:#a8bfd8;font-size:.95rem;line-height:1.6;margin:0}
+
 /* ── FLOW ── */
 #flow{padding:6rem 0}
 .flow-strip{display:flex;align-items:stretch;gap:0;background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-top:1rem}
@@ -665,6 +682,68 @@ a:hover{filter:drop-shadow(0 0 8px rgba(167,139,250,1)) drop-shadow(0 0 20px rgb
 <span class="pr">$</span> <span class="cmd">star</span> oapp install KeycardQuest@1.0.0
 <span class="ok">✔ Installed + resolved 3 dependencies</span>
 <span class="ok">✔ Live via WEB5 STAR API</span></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STAR ODK / COSMIC ORM -->
+<section id="star-odk" style="background:linear-gradient(180deg,rgba(139,92,246,.04),transparent)">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <div class="section-kicker">DEVELOPMENT KIT</div>
+      <h2>STAR ODK: <span>Build Once, Deploy Everywhere</span></h2>
+      <p>The STAR ODK (Synergiser Transformer/Translator Aggregator Resolver) dynamically generates optimized code for every platform and provider you target — no vendor lock-in, no rebuilding.</p>
+    </div>
+    <div class="odk-grid">
+      <div class="odk-card reveal">
+        <div class="odk-icon">🧬</div>
+        <h3>COSMIC ORM</h3>
+        <p>A universal abstraction layer that speaks every provider's language. Define your data model once, and COSMIC automatically translates it to Holochain, Ethereum, MongoDB, Neo4j, IPFS, SQLite and 40+ more.</p>
+        <ul class="provider-list">
+          <li>Holochain</li><li>Ethereum</li><li>EOSIO</li><li>MongoDB</li><li>Neo4j</li><li>IPFS</li><li>SQLite</li><li>+ more</li>
+        </ul>
+      </div>
+      <div class="odk-card reveal">
+        <div class="odk-icon">⚙️</div>
+        <h3>Dynamic Code Generation</h3>
+        <p>Write your business logic in C#, debug it instantly, and let STAR ODK generate optimized Rust code for the Data Access Layer. Debug C# instead of Rust. Access both Rust and C# libraries. Best of both worlds.</p>
+        <div class="code-stack">
+          <div class="layer">C# BLL</div>
+          <div class="layer">↓ auto-generates ↓</div>
+          <div class="layer">Rust DAL</div>
+        </div>
+      </div>
+      <div class="odk-card reveal">
+        <div class="odk-icon">🌌</div>
+        <h3>Hierarchical Architecture</h3>
+        <p>Organize your applications using cosmic metaphors. Stars, SuperStars, GrandSuperStars and GreatGrandSuperStars represent different organizational levels within the OASIS network — each with powerful capabilities for creating and managing sub-systems.</p>
+      </div>
+      <div class="odk-card reveal">
+        <div class="odk-icon">📦</div>
+        <h3>Multi-Provider Support</h3>
+        <p>Target every major blockchain, database and protocol at once. Define constraints once. STAR ODK generates provider-specific implementations automatically — no manual porting, no rewrites when networks upgrade.</p>
+      </div>
+    </div>
+    <div class="odk-features" style="margin-top:3rem;text-align:center">
+      <h3 style="font-family:'Orbitron',sans-serif;color:var(--violet-light);margin-bottom:1.5rem;font-size:1.1rem">What STAR ODK Does For You</h3>
+      <div class="features-row">
+        <div class="feature-box">
+          <span class="feature-icon">✓</span>
+          <p><strong>Change Management</strong> — Track and version all data model changes</p>
+        </div>
+        <div class="feature-box">
+          <span class="feature-icon">✓</span>
+          <p><strong>Version Control</strong> — Semantic versioning of your entire application</p>
+        </div>
+        <div class="feature-box">
+          <span class="feature-icon">✓</span>
+          <p><strong>Integrated Holochain Conductor</strong> — No separate configuration or shipping needed</p>
+        </div>
+        <div class="feature-box">
+          <span class="feature-icon">✓</span>
+          <p><strong>Provider Auto-Selection</strong> — Automatically find the fastest, most reliable provider in your region</p>
         </div>
       </div>
     </div>
