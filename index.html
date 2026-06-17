@@ -1079,11 +1079,11 @@ a:hover{filter:drop-shadow(0 0 8px rgba(167,139,250,1)) drop-shadow(0 0 20px rgb
   if(!cv)return;
   var ctx=cv.getContext('2d');
   var W,H,cx,cy;
-  var TILT=0.40, t=0, animId;
+  var TILT=0.58, t=0, animId;
 
   // All sizes are fractions of cx so the diagram always fills the container
   var P={
-    RU:0.54,  RG:0.235, RS:0.170, RP:0.098, RM:0.046,
+    RU:0.72,  RG:0.210, RS:0.148, RP:0.085, RM:0.040,
     bG:0.068, bU:0.036, bS:0.034, bSt:0.026, bPl:0.018, bMn:0.011,
     zRG:0.108,zRU:0.058,zRS:0.055,zRSt:0.046,zRPl:0.036,zRMn:0.024,
     zBG:0.0080,zBU:0.0065,zBS:0.0058,zBSt:0.0054,zBPl:0.0048,zBMn:0.0042,
@@ -1094,7 +1094,7 @@ a:hover{filter:drop-shadow(0 0 8px rgba(167,139,250,1)) drop-shadow(0 0 20px rgb
   function resize(){
     if(animId) cancelAnimationFrame(animId);
     W=cv.parentElement.clientWidth||1200;
-    H=Math.round(W*0.62);
+    H=Math.round(W*0.74);
     cv.width=W; cv.height=H;
     cx=W/2; cy=H/2;
     animId=requestAnimationFrame(render);
