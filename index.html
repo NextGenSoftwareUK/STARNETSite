@@ -233,10 +233,11 @@ footer a:hover,.foot-col ul li a:hover{color:var(--violet-light);filter:drop-sha
   .flow-strip{flex-direction:column}
   .flow-step{border-right:none;border-bottom:1px solid var(--border)}
   .flow-step:last-child{border-bottom:none}
-  .foot-grid{grid-template-columns:1fr 1fr}
+  .foot-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:1.2rem}
 }
 @media(max-width:600px){
-  .rm-grid,.foot-grid{grid-template-columns:1fr}
+  .rm-grid{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
   .hero-btns,.dev-links,.cta-btns{flex-direction:column;align-items:center}
 }
 a:hover{filter:drop-shadow(0 0 8px rgba(167,139,250,1)) drop-shadow(0 0 20px rgba(167,139,250,.8)) drop-shadow(0 0 40px rgba(167,139,250,.4))}
