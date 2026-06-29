@@ -44,6 +44,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 .nav-links a:hover{color:var(--violet-light)}
 .nav-cta{background:var(--violet);color:#fff;padding:.45rem 1.2rem;border-radius:4px;font-family:'Orbitron',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-decoration:none;transition:opacity .2s}
 .nav-cta:hover{opacity:.85}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--violet-light);border-radius:2px;transition:transform .3s}
 
 /* ── HERO ── */
 #hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:8rem 2rem 5rem;overflow:hidden;z-index:1}
@@ -230,15 +232,35 @@ footer a:hover,.foot-col ul li a:hover{color:var(--violet-light);filter:drop-sha
   .what-grid,.dev-grid{grid-template-columns:1fr}
   .rm-grid{grid-template-columns:1fr 1fr}
   nav .nav-links{display:none}
+  .nav-hamburger{display:flex}
   .flow-strip{flex-direction:column}
   .flow-step{border-right:none;border-bottom:1px solid var(--border)}
   .flow-step:last-child{border-bottom:none}
   .foot-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:1.2rem}
+  .holon-grid,.odk-grid,.features-row{grid-template-columns:1fr 1fr!important}
+  .holon-card,.odk-card,.feature-box{padding:1.2rem}
+}
+@media(max-width:720px){
+  section{padding-top:4.5rem!important;padding-bottom:4.5rem!important}
+  .section-head{margin-bottom:2.4rem}
+  .section-head h2{font-size:clamp(1.4rem,5vw,2rem)}
+  .section-head p{font-size:1rem}
+  .holon-grid,.odk-grid,.features-row{grid-template-columns:1fr!important}
+  .holon-card h3,.odk-card h3{font-size:.82rem}
+  .holon-card p,.odk-card p{font-size:.88rem}
 }
 @media(max-width:600px){
   .rm-grid{grid-template-columns:1fr}
   .foot-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
   .hero-btns,.dev-links,.cta-btns{flex-direction:column;align-items:center}
+}
+@media(max-width:520px){
+  .what-card svg,.term{width:100%}
+  .holon-card,.odk-card,.feature-box{padding:1rem}
+  .cta-box{padding:2.5rem 1.5rem}
+  .stat-row{gap:.7rem}
+  .stat-box{padding:.7rem .8rem;min-width:100px}
+  .stat-box .num{font-size:1.2rem}
 }
 a:hover{filter:drop-shadow(0 0 8px rgba(167,139,250,1)) drop-shadow(0 0 20px rgba(167,139,250,.8)) drop-shadow(0 0 40px rgba(167,139,250,.4))}
 </style>
@@ -269,11 +291,16 @@ a:hover{filter:drop-shadow(0 0 8px rgba(167,139,250,1)) drop-shadow(0 0 20px rgb
   <ul class="nav-links">
     <li><a href="#what">About</a></li>
     <li><a href="#holons">Holons</a></li>
+    <li><a href="#celestial-growth">Growth</a></li>
+    <li><a href="#omniverse-diagram">Omniverse</a></li>
     <li><a href="#cli">CLI</a></li>
+    <li><a href="#star-odk">STAR ODK</a></li>
+    <li><a href="#flow">Flow</a></li>
     <li><a href="#architecture">Architecture</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="https://oasisomniverse.one" target="_blank" rel="noopener">ECOSYSTEM</a></li>
   </ul>
+  <div class="nav-hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
   <a href="https://github.com/NextGenSoftwareUK/OASIS" target="_blank" rel="noopener" class="nav-cta">GITHUB</a>
 </nav>
 
