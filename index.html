@@ -88,7 +88,7 @@ section{position:relative;z-index:1}
 
 /* ── HOLON TYPES ── */
 #holons{padding:6rem 0;background:linear-gradient(180deg,transparent,rgba(139,92,246,.05),transparent)}
-.holon-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:1.5rem}
+.holon-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(255px,100%),1fr));gap:1.5rem}
 .holon-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.5rem;transition:border-color .3s,box-shadow .3s,transform .3s;will-change:transform}
 .holon-card:hover{border-color:var(--violet);box-shadow:0 0 22px rgba(139,92,246,.2);transform:translateY(-3px)}
 .holon-icon{font-size:1.9rem;margin-bottom:.8rem}
@@ -134,7 +134,7 @@ section{position:relative;z-index:1}
 
 /* ── STAR ODK ── */
 #star-odk{padding:6rem 0}
-.odk-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2rem;margin:3rem 0}
+.odk-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:2rem;margin:3rem 0}
 .odk-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:2rem 1.5rem;text-align:center;transition:border-color .3s,box-shadow .3s,transform .3s}
 .odk-card:hover{border-color:var(--violet-light);box-shadow:0 0 30px rgba(139,92,246,.15);transform:translateY(-4px)}
 .odk-icon{font-size:2.4rem;margin-bottom:1rem;display:block}
@@ -144,7 +144,7 @@ section{position:relative;z-index:1}
 .provider-list li{background:rgba(139,92,246,.08);border:1px solid rgba(139,92,246,.15);color:var(--text-dim);padding:.3rem .7rem;border-radius:4px;font-size:.8rem}
 .code-stack{background:rgba(139,92,246,.05);border:1px solid var(--border);border-radius:8px;padding:1.2rem;margin-top:1rem;font-family:'Share Tech Mono',monospace;font-size:.85rem}
 .code-stack .layer{padding:.4rem;color:var(--text-dim)}
-.features-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;margin-top:2rem}
+.features-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));gap:1.5rem;margin-top:2rem}
 .feature-box{background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.15);border-radius:10px;padding:1.5rem;text-align:left}
 .feature-icon{display:inline-block;color:var(--violet-light);font-size:1.3rem;margin-right:.6rem;font-weight:700}
 .feature-box p{color:#a8bfd8;font-size:1rem;line-height:1.6;margin:0}
@@ -497,7 +497,7 @@ a:hover{filter:drop-shadow(0 0 8px rgba(167,139,250,1)) drop-shadow(0 0 20px rgb
       <h2>Discover • Publish • Integrate • Deploy • Monetize • Evolve</h2>
       <p>STARNET is the complete lifecycle management system for Web5 creations — from discovery to ongoing evolution.</p>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;max-width:1080px;margin:0 auto">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:1rem;max-width:1080px;margin:0 auto">
       <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.5rem;text-align:center">
         <div style="font-size:1.8rem;margin-bottom:0.8rem">🔍</div>
         <div style="font-family:'Orbitron',sans-serif;font-size:0.9rem;font-weight:700;color:var(--cyan);letter-spacing:.06em;margin-bottom:0.5rem">DISCOVER</div>
@@ -540,7 +540,7 @@ a:hover{filter:drop-shadow(0 0 8px rgba(167,139,250,1)) drop-shadow(0 0 20px rgb
       <h2>Deployment Pipeline: DEVELOP → TEST → SANDBOX → LIVE</h2>
       <p>Version-controlled staging environment with full rollback and roll-forward capabilities. Test safely, deploy confidently, evolve continuously without breaking existing deployments.</p>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1.5rem;max-width:1100px;margin:0 auto">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:1.5rem;max-width:1100px;margin:0 auto">
       <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:2rem;text-align:center">
         <div style="font-size:2rem;margin-bottom:1rem;color:var(--violet)">💻</div>
         <div style="font-family:'Orbitron',sans-serif;font-size:1rem;font-weight:700;color:var(--cyan);letter-spacing:.06em;margin-bottom:1rem">DEVELOP</div>
@@ -724,7 +724,7 @@ a:hover{filter:drop-shadow(0 0 8px rgba(167,139,250,1)) drop-shadow(0 0 20px rgb
       <h2>Creator &amp; Developer Economy</h2>
       <p>Publish once. Earn forever. STARNET's revenue sharing model lets creators and developers monetize their work across unlimited worlds and users.</p>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1.5rem;max-width:1400px;margin:0 auto">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:1.5rem;max-width:1400px;margin:0 auto">
       <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:2.2rem 1.6rem;text-align:center">
         <div style="font-size:1.6rem;margin-bottom:1rem">🎁</div>
         <div style="font-family:'Orbitron',sans-serif;font-size:0.9rem;font-weight:700;color:var(--cyan);letter-spacing:.06em;margin-bottom:0.5rem">LICENSING</div>
@@ -827,7 +827,7 @@ a:hover{filter:drop-shadow(0 0 8px rgba(167,139,250,1)) drop-shadow(0 0 20px rgb
       </div>
     </div>
     <h3 style="font-family:'Orbitron',sans-serif;font-size:0.9rem;color:var(--text);text-align:center;letter-spacing:.08em;margin:2rem 0 1.5rem;text-transform:uppercase" class="reveal">The Eight Pillars of COSMIC ORM</h3>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1.2rem;max-width:1100px;margin:0 auto">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:1.2rem;max-width:1100px;margin:0 auto">
       <div style="background:rgba(217,70,239,.08);border:1px solid rgba(217,70,239,.2);border-radius:10px;padding:1.5rem;text-align:center">
         <div style="font-size:1.8rem;margin-bottom:0.8rem">🌐</div>
         <div style="font-family:'Orbitron',sans-serif;font-size:0.8rem;color:var(--cyan);letter-spacing:.08em;margin-bottom:0.5rem;text-transform:uppercase">Universal Abstraction</div>
