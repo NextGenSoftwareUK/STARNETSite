@@ -1733,6 +1733,30 @@ quest.MetaData[<span style="color:#00cc88">"Reward"</span>] = <span style="color
   });
   resize();
 })();
+
+// ── MOBILE NAV ──
+function toggleMenu(){
+  var links=document.querySelector('.nav-links');
+  if(links.style.display==='flex'){
+    links.style.display='none';
+  } else {
+    links.style.display='flex';
+    links.style.flexDirection='column';
+    links.style.position='absolute';
+    links.style.top='100%';
+    links.style.left='0';
+    links.style.right='0';
+    links.style.background='rgba(5,3,20,.97)';
+    links.style.borderBottom='1px solid rgba(139,92,246,.2)';
+    links.style.padding='10px 0';
+    links.style.zIndex='999';
+  }
+}
+document.querySelectorAll('.nav-links a').forEach(function(a){
+  a.addEventListener('click',function(){
+    if(window.innerWidth<900) document.querySelector('.nav-links').style.display='none';
+  });
+});
 </script>
 </body>
 </html>
