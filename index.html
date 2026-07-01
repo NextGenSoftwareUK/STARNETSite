@@ -40,7 +40,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 .nav-logo{width:36px;height:36px}
 .nav-brand span{font-family:'Orbitron',sans-serif;font-size:1.1rem;font-weight:700;color:var(--violet-light);letter-spacing:.12em}
 .nav-links{display:flex;gap:2rem;list-style:none}
-.nav-links a{color:#a8bfd8;text-decoration:none;font-weight:600;font-size:.95rem;letter-spacing:.06em;transition:color .2s}
+.nav-links a{color:#a8bfd8;text-decoration:none;font-weight:600;font-size:.95rem;letter-spacing:.06em;transition:color .2s;text-transform:uppercase}
 .nav-links a:hover{color:var(--violet-light)}
 .nav-cta{background:var(--violet);color:#fff;padding:.45rem 1.2rem;border-radius:4px;font-family:'Orbitron',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-decoration:none;transition:opacity .2s}
 .nav-cta:hover{opacity:.85}
@@ -242,10 +242,10 @@ footer a:hover,.foot-col ul li a:hover{color:var(--violet-light);filter:drop-sha
   nav .nav-links{
     display:flex!important;flex-direction:column;gap:0;margin:0;
     position:fixed;top:0;right:0;height:100vh;width:min(78vw,320px);
-    justify-content:center;align-items:flex-start;
+    justify-content:flex-start;align-items:flex-start;
     background:rgba(5,3,20,.97);backdrop-filter:blur(16px);
     border-left:1px solid rgba(139,92,246,.2);
-    padding:40px;z-index:999;
+    padding:100px 40px 40px;z-index:999;
     transform:translateX(100%);transition:transform .3s ease;
   }
   nav .nav-links.open{transform:translateX(0)}
