@@ -39,8 +39,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 .nav-brand{display:flex;align-items:center;gap:.75rem;text-decoration:none}
 .nav-logo{width:36px;height:36px}
 .nav-brand span{font-family:'Orbitron',sans-serif;font-size:1.1rem;font-weight:700;color:var(--violet-light);letter-spacing:.12em}
-.nav-links{display:flex;gap:2rem;list-style:none}
-.nav-links a{color:#a8bfd8;text-decoration:none;font-weight:600;font-size:.95rem;letter-spacing:.06em;transition:color .2s;text-transform:uppercase}
+.nav-links{display:flex;gap:1.3rem;list-style:none}
+.nav-links a{color:#a8bfd8;text-decoration:none;font-weight:600;font-size:.78rem;letter-spacing:.05em;transition:color .2s;text-transform:uppercase;white-space:nowrap}
 .nav-links a:hover{color:var(--violet-light)}
 .nav-cta{background:var(--violet);color:#fff;padding:.45rem 1.2rem;border-radius:4px;font-family:'Orbitron',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-decoration:none;transition:opacity .2s}
 .nav-cta:hover{opacity:.85}
@@ -314,7 +314,10 @@ a:hover{filter:drop-shadow(0 0 8px rgba(167,139,250,1)) drop-shadow(0 0 20px rgb
   <ul class="nav-links">
     <li><a href="#what">About</a></li>
     <li><a href="#holons">Holons</a></li>
+    <li><a href="#smart-bricks">Smart Bricks</a></li>
     <li><a href="#celestial-growth">Growth</a></li>
+    <li><a href="#economy">Economy</a></li>
+    <li><a href="#cosmic-orm">Cosmic ORM</a></li>
     <li><a href="#omniverse-diagram">Omniverse</a></li>
     <li><a href="#cli">CLI</a></li>
     <li><a href="#star-odk">STAR ODK</a></li>
@@ -682,7 +685,7 @@ a:hover{filter:drop-shadow(0 0 8px rgba(167,139,250,1)) drop-shadow(0 0 20px rgb
 </section>
 
 <!-- SMART BRICKS -->
-<section style="padding:6rem 0;background:linear-gradient(180deg,transparent,rgba(0,229,255,.04))">
+<section id="smart-bricks" style="padding:6rem 0;background:linear-gradient(180deg,transparent,rgba(0,229,255,.04))">
   <div class="section-inner">
     <div class="section-head reveal">
       <div class="section-kicker">COMPOSABLE BUILDING BLOCKS</div>
@@ -735,7 +738,7 @@ a:hover{filter:drop-shadow(0 0 8px rgba(167,139,250,1)) drop-shadow(0 0 20px rgb
 </section>
 
 <!-- CREATOR & DEVELOPER ECONOMY -->
-<section style="padding:6rem 0;background:linear-gradient(180deg,rgba(139,92,246,.04),transparent)">
+<section id="economy" style="padding:6rem 0;background:linear-gradient(180deg,rgba(139,92,246,.04),transparent)">
   <div class="section-inner">
     <div class="section-head reveal">
       <div class="section-kicker">EARN &amp; GROW</div>
@@ -788,7 +791,7 @@ a:hover{filter:drop-shadow(0 0 8px rgba(167,139,250,1)) drop-shadow(0 0 20px rgb
 </section>
 
 <!-- COSMIC ORM: THE DATA BACKBONE -->
-<section style="padding:6rem 0;background:linear-gradient(180deg,rgba(217,70,239,.04),transparent)">
+<section id="cosmic-orm" style="padding:6rem 0;background:linear-gradient(180deg,rgba(217,70,239,.04),transparent)">
   <div class="section-inner">
     <div class="section-head reveal">
       <div class="section-kicker">UNIVERSAL DATA LAYER</div>
