@@ -44,8 +44,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 .nav-links a:hover{color:var(--violet-light)}
 .nav-cta{background:var(--violet);color:#fff;padding:.45rem 1.2rem;border-radius:4px;font-family:'Orbitron',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-decoration:none;transition:opacity .2s}
 .nav-cta:hover{opacity:.85}
-.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
-.nav-hamburger span{display:block;width:22px;height:2px;background:var(--violet-light);border-radius:2px;transition:transform .3s}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;z-index:1000;position:relative}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--violet-light);border-radius:2px;transition:transform .25s,opacity .25s}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-hamburger.open span:nth-child(2){opacity:0}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
 /* ── HERO ── */
 #hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:8rem 2rem 5rem;overflow:hidden;z-index:1}
@@ -1750,10 +1753,14 @@ quest.MetaData[<span style="color:#00cc88">"Reward"</span>] = <span style="color
 // ── MOBILE NAV ──
 function toggleMenu(){
   document.querySelector('.nav-links').classList.toggle('open');
+  document.querySelector('.nav-hamburger').classList.toggle('open');
 }
 document.querySelectorAll('.nav-links a').forEach(function(a){
   a.addEventListener('click',function(){
-    if(window.innerWidth<900) document.querySelector('.nav-links').classList.remove('open');
+    if(window.innerWidth<900){
+      document.querySelector('.nav-links').classList.remove('open');
+      document.querySelector('.nav-hamburger').classList.remove('open');
+    }
   });
 });
 </script>
