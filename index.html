@@ -267,6 +267,9 @@ footer a:hover,.foot-col ul li a:hover{color:var(--violet-light);filter:drop-sha
   .stat-row{gap:.7rem}
   .stat-box{padding:.7rem .8rem;min-width:100px}
   .stat-box .num{font-size:1.2rem}
+  .section-inner{padding:0 .75rem}
+  .publish-code-card{padding:1rem!important}
+  .publish-code-card pre{font-size:.72rem!important;padding:.8rem!important}
 }
 a:hover{filter:drop-shadow(0 0 8px rgba(167,139,250,1)) drop-shadow(0 0 20px rgba(167,139,250,.8)) drop-shadow(0 0 40px rgba(167,139,250,.4))}
 </style>
@@ -871,7 +874,7 @@ a:hover{filter:drop-shadow(0 0 8px rgba(167,139,250,1)) drop-shadow(0 0 20px rgb
       </div>
     </div>
     <h3 style="font-family:'Orbitron',sans-serif;font-size:0.95rem;color:var(--text);text-align:center;letter-spacing:.08em;margin:3rem 0 1.5rem;text-transform:uppercase">Publish & Access Holons</h3>
-    <div style="background:rgba(139,92,246,.05);border:1px solid rgba(139,92,246,.15);border-radius:12px;padding:2rem;max-width:1100px;margin:0 auto">
+    <div class="publish-code-card" style="background:rgba(139,92,246,.05);border:1px solid rgba(139,92,246,.15);border-radius:12px;padding:2rem;max-width:1100px;margin:0 auto">
       <h4 style="font-family:'Orbitron',sans-serif;font-size:0.85rem;color:var(--cyan);letter-spacing:.08em;margin-bottom:1rem;text-transform:uppercase">Save a Holon to STARNET</h4>
       <pre style="background:#0a0515;border:1px solid rgba(139,92,246,.2);border-radius:8px;padding:1.2rem;color:#c0d8ff;font-size:0.8rem;overflow-x:auto;font-family:'Share Tech Mono',monospace;line-height:1.6;white-space:pre"><span style="color:var(--cyan)">// Create and save a quest</span>
 <span style="color:var(--cyan)">var</span> quest = <span style="color:var(--cyan)">new</span> Quest();
