@@ -44,7 +44,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 .nav-links a:hover{color:var(--violet-light)}
 .nav-links-mobile-only{display:none}
 .nav-cta{background:var(--violet);color:#fff;padding:.45rem 1.2rem;border-radius:4px;font-family:'Orbitron',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-decoration:none;transition:opacity .2s}
-.nav-cta:hover{opacity:.85}
+.nav-cta:hover{opacity:.85;box-shadow:0 0 24px rgba(139,92,246,.6);transform:translateY(-1px)}
 .nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;z-index:1000;position:relative}
 .nav-hamburger span{display:block;width:22px;height:2px;background:var(--violet-light);border-radius:2px;transition:transform .25s,opacity .25s}
 .nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
@@ -62,9 +62,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 .btn-primary{background:var(--violet);color:#fff;padding:.75rem 2rem;border-radius:5px;font-family:'Orbitron',sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.1em;text-decoration:none;transition:opacity .2s,box-shadow .2s;box-shadow:0 0 18px rgba(139,92,246,.5)}
 .btn-primary:hover{opacity:.9;box-shadow:0 0 30px rgba(139,92,246,.7)}
 .btn-outline{border:1px solid var(--violet);color:var(--violet-light);padding:.75rem 2rem;border-radius:5px;font-family:'Orbitron',sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.1em;text-decoration:none;transition:background .2s,color .2s}
-.btn-outline:hover{background:rgba(139,92,246,.14)}
+.btn-outline:hover{background:rgba(139,92,246,.14);box-shadow:0 0 20px rgba(139,92,246,.45);transform:translateY(-1px)}
 .btn-outline-cyan{border:1px solid var(--cyan);color:var(--cyan);padding:.75rem 2rem;border-radius:5px;font-family:'Orbitron',sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.1em;text-decoration:none;transition:background .2s}
-.btn-outline-cyan:hover{background:rgba(0,229,255,.1)}
+.btn-outline-cyan:hover{background:rgba(0,229,255,.1);box-shadow:0 0 20px rgba(0,229,255,.4);transform:translateY(-1px)}
 
 /* hero SVG network */
 #hero-svg{order:10;display:block;width:100%;max-width:1720px;margin-top:40px;pointer-events:none;opacity:.85}
