@@ -307,7 +307,7 @@ a:hover{filter:drop-shadow(0 0 8px rgba(167,139,250,1)) drop-shadow(0 0 20px rgb
   nav .nav-links li{margin:0;padding:0;width:100%;border:0}
   nav .nav-links a{display:block;padding:9px 0;font-size:.8rem;text-align:left;border-bottom:1px solid rgba(255,255,255,.08);width:100%}
   .nav-links-mobile-only{display:list-item}
-  .nav-hamburger{display:flex;position:absolute;right:1rem;top:50%;transform:translateY(-50%)}
+  .nav-hamburger{display:flex;position:static;transform:none;order:99;margin-left:1.25rem;flex-shrink:0}
 }
 </style>
 </head>
@@ -462,7 +462,7 @@ a:hover{filter:drop-shadow(0 0 8px rgba(167,139,250,1)) drop-shadow(0 0 20px rgb
     <div class="hero-btns">
       <a href="#cli" class="btn-primary">START PUBLISHING</a>
       <a href="https://api.starnet.oasisomniverse.one/swagger" target="_blank" rel="noopener" class="btn-outline-cyan">EXPLORE THE API →</a>
-      <a href="https://api.starnet.oasisomniverse.one/graphql" target="_blank" rel="noopener" class="btn-secondary">GRAPHQL →</a>
+      <a href="https://api.starnet.oasisomniverse.one/graphql" target="_blank" rel="noopener" class="btn-outline" style="border-color:rgba(236,72,153,.5);color:#f472b6">GRAPHQL →</a>
       <a href="https://www.npmjs.com/package/@oasisomniverse/web5-api" target="_blank" rel="noopener" class="btn-outline" style="border-color:rgba(220,38,38,.5);color:#f87171">NPM PACKAGE →</a>
     </div>
   </div>
